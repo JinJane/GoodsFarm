@@ -6,6 +6,7 @@
     <h1>mook2</h1>
 
     <h1>jane</h1>
+    <h1>มุกอีกรอบ</h1>
     <BarBeforeLogin/>
     <BarAfterLogin/>
     <router-view/>
