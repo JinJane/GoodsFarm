@@ -7,7 +7,7 @@
 
     <h1>janejane</h1>
     <h1>jane</h1>
-    <h1>มุกอีกรอบ</h1>
+    <h1>มุกอีกรอบ2222</h1>
     <BarBeforeLogin/>
     <BarAfterLogin/>
     <router-view/>
