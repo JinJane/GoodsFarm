@@ -16,9 +16,8 @@ export default {
 }
 </script>
 
-
 <style >
-
+/* jane */
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
