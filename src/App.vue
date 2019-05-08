@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <h1>jane</h1>
+    <h1>MookUpdate</h1>
+    <h1>ewiougaperojgpierjg</h1>
+    <h1>mook2</h1>
+
     <BarBeforeLogin/>
     <BarAfterLogin/>
     <router-view/>
