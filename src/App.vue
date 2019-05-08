@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
+    <h1>mook</h1>
     <BarBeforeLogin/>
     <BarAfterLogin/>
     <router-view/>
