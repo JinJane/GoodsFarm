@@ -2,6 +2,7 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <h1>MookUpdate</h1>
+    <h1>ewiougaperojgpierjg</h1>
     <BarBeforeLogin/>
     <BarAfterLogin/>
     <router-view/>
