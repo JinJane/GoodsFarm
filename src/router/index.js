@@ -7,7 +7,7 @@ import Order from '@/components/Order'
 import GoodsDetail from '@/components/GoodsDetail'
 import Bucket from '@/components/Bucket'
 import AddGoods from '@/components/AddGoods'
-
+import Card from '@/components/elements/Card'
 Vue.use(Router)
 
 export default new Router({
@@ -33,7 +33,7 @@ export default new Router({
       component: Order
     },
     {
-      path: '/goodsdetail',
+      path: '/goodsdetail/:id',
       name: 'GoodsDetail',
       component: GoodsDetail
     },
@@ -46,6 +46,12 @@ export default new Router({
       path: '/addgoods',
       name: 'AddGoods',
       component: AddGoods
+    },
+    {
+      path: '/card',
+      name: 'Card',
+      props: true,
+      component: Card
     },
   ]
 })
