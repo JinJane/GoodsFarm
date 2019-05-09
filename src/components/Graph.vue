@@ -1,5 +1,11 @@
 <template>
-<div class="container">
+<div class="container" style="flex-direction:row;">
+    <div class="select ">
+  <select >
+    <option v-for="i in type_goods" :key="i">{{i}}</option>
+   
+  </select>
+</div>
  <chart :type="'line'" :data="data" :options="options"></chart>
 </div>
  
@@ -15,7 +21,9 @@ export default {
  
   data () {
     return {
+      type_goods:['meat','egg','milk','veget','fruit'],
       data: {
+         
         labels: ['Sleeping', 'Designing', 'Coding', 'Cycling','Sleeping', 'Designing', 'Coding', 'Cycling'],
           datasets: [{
           data: [20, 40, 5, 35,20, 40, 5, 35],
