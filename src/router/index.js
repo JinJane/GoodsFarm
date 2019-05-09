@@ -7,6 +7,7 @@ import Order from '@/components/Order'
 import GoodsDetail from '@/components/GoodsDetail'
 import Bucket from '@/components/Bucket'
 import AddGoods from '@/components/AddGoods'
+import Graph from '@/components/Graph'
 import Card from '@/components/elements/Card'
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       name: 'Card',
       props: true,
       component: Card
+    },
+    {
+      path: '/graph',
+      name: 'Graph',
+      component: Graph
     },
   ]
 })
