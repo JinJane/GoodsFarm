@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <!-- <img src="./assets/logo.png"> -->
+    
     <BarBeforeLogin/>
     <BarAfterLogin/>
     <router-view/>
@@ -15,7 +17,7 @@ export default {
 }
 </script>
 
-<style >
+<style lang="scss" src="./global-style.scss" >
 /* jane */
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

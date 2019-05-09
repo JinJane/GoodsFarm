@@ -5,19 +5,20 @@
             <aside class="column is-3 is-narrow-mobile is-fullheight section is-hidden-mobile">
                 <p class="menu-label is-hidden-touch">Navigation</p>
                 <ul class="menu-list">
+                    <!-- <a @click="clickStock()" style="color: #fff;" > -->
                     <li>
-                        <a href="#" >
-                            <span class="icon"><i class="fa fa-home"></i></span> Home
+                        <a @click="clickStock()"  >
+                            <span class="icon has-text-primary"><i class="fas fa-store"></i></span>
+                            <span><strong>STOCK</strong></span>
                         </a>
-                    </li>
-                    <li>
-                        <a  class="is-active">
-                            <span class="icon"><i class="fa fa-table"></i></span> Stock
-                        </a>
+                        <!-- <a @click="clickStock()">
+                            <span class="icon is-large has-text-danger" size="2rem x 2rem	"><i class="fas dumpster fa-2x " aria-hidden="true"></i></span>
+                            <span><strong>SELL</strong></span>
+                        </a> -->
 
                         <ul>
-                            <li >
-                                <a  @click="setVisibleProduct">
+                            <li aria-controls="bb">
+                                <a  @click=" clickMeat()"  >
                                     <img src="../assets/steak.png" alt="" style="vertical-align:middle;" height="24px;" width="24px"/>
                                     <span ><strong>MEAT</strong></span>
                                     
@@ -27,25 +28,25 @@
                             </li>
                             
                             <li>
-                                <a >
+                                <a @click="clickVegetable()" >
                                     <img src="../assets/lettuce.png" alt="" style="vertical-align:middle;" height="24px;" width="24px"/>
                                     <span ><strong>VEGETABLE</strong></span>
                                 </a>
                             </li>
                             <li>
-                                <a >
+                                <a @click="clickEgg()">
                                     <img src="../assets/fried-egg.png" alt="" style="vertical-align:middle;" height="24px;" width="24px"/>
                                     <span ><strong>EGG</strong></span>
                                 </a>
                             </li>
                             <li>
-                                <a >
+                                <a @click=" clickFruit()">
                                     <img src="../assets/watermelon.png" alt="" style="vertical-align:middle;" height="24px;" width="24px"/>
                                     <span ><strong>FRUIT</strong></span>
                                 </a>
                             </li>
                             <li>
-                                <a >
+                                <a @click="clickMilk()">
                                     <img src="../assets/milk.png" alt="" style="vertical-align:middle;" height="24px;" width="24px"/>
                                     <span ><strong>MILK</strong></span>
                                 </a>
@@ -53,55 +54,158 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="">
-                            <span class="icon"><i class="fa fa-info"></i></span> Order
+                        <a @click="GoToOrder()" >
+                            <span class="icon has-text-link"><i class="fas fa-shipping-fast"></i></span>
+                            <span><strong>ORDER</strong></span>
                         </a>
                     </li>
                     <li>
-                        <a class="">
-                            <span class="icon"><i class="fa fa-info"></i></span> เพิ่มสินค้า
+                        <a @click="GoToAddGoods()">
+                            <span class="icon has-text-danger"><i class="fas fa-plus"></i></span>
+                            <span><strong>Add Goods</strong></span>
                         </a>
                     </li>
                 </ul>
             </aside>
             
-
-        <div class="container container is-fluid">
-            <CardSellList />
+        <!-- {{getGoodsShow}} -->
+        <div  class="container container is-fluid " >
+            <div class="is-active">
+                <CardList :Goods="getGoodsShow" :state="'sell'" ></CardList>
+            </div>
+            
         </div>
         
   
         </section>
-
+    
     </div>
 </template>
 
+
 <script>
-import CardSellList from './elements/CardSellList'
+import axios from 'axios'
+import CardList from './elements/CardList'
     export default {
-      components: {CardSellList },
+      components: {CardList},
       data(){
           return{
-              visibleProduct : []
+              AllGoodsOfUser:[],
+              GoodsShow:[],
+              dataMeat:[],
+              username:''
           }
       },
         
         computed : {
-            updateProducts(){
-                // this.$store.state.visibleProduct = this.$store.state.products.slice
-                // ((this.$store.state.currentPage-1) * this.$store.state.perPage,((this.$store.state.currentPage-1 )
-                // * this.$store.state.perPage)+this.$store.state.perPage)
-                // this.$store.state.visibleProduct = this.$store.state.products.slice
-                // ((this.$store.state.currentPage-1) * this.$store.state.perPage,((this.$store.state.currentPage )
-                // *this.$store.state.perPage))
-            },
-            setVisibleProduct(){
-
+            getGoodsShow(){
+                return this.GoodsShow
             }
             
         },
-        mounted:{
+        methods:{
+            
+            GoToAddGoods(){
+                this.$router.push( '/addgoods' );
+            },
+            GoToOrder(){
+                this.$router.push( '/order' );
+            },
+            clickStock(){
+                // alert("Stock")
+                this.GoodsShow=this.AllGoodsOfUser
+            },
+            clickMeat(){
+                // alert("Meat")
+                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"meat"})
+                .then((response) => {
+                    //console.log(response.data.data)
+                    
+                    this.GoodsShow = response.data.data
+                    
+                    // console.log(response.data)
 
+                })
+                .catch((error) => {
+                    console.log(error)
+                })   
+                
+            },
+            clickVegetable(){
+                // alert("Vegetable")
+                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"veget"})
+                .then((response) => {
+                    //console.log(response.data.data)
+                    
+                    this.GoodsShow = response.data.data
+                    
+                    // console.log(response.data)
+
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            },
+            clickEgg(){
+                // alert("Egg")
+                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"egg"})
+                .then((response) => {
+                    //console.log(response.data.data)
+                    
+                    this.GoodsShow = response.data.data
+                    
+                    // console.log(response.data)
+
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            },
+            clickFruit(){
+                // alert("Fruit")
+                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"fruit"})
+                .then((response) => {
+                    //console.log(response.data.data)
+                    
+                    this.GoodsShow = response.data.data
+                    
+                    // console.log(response.data)
+
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            },
+            clickMilk(){
+                // alert("Milk")
+                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"milk"})
+                .then((response) => {
+                    //console.log(response.data.data)
+                    
+                    this.GoodsShow = response.data.data
+                    
+                    // console.log(response.data)
+
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            }
+        },
+        beforeMount(){
+            this.username="garking"
+            axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/getall', {username:this.username})
+            .then((response) => {
+                //console.log(response.data)
+                this.AllGoodsOfUser=response.data
+                this.GoodsShow=this.AllGoodsOfUser
+                //console.log(response.data)
+
+            })
+            .catch((error) => {
+                console.log(error)
+            })    
+                
         }
          
     }

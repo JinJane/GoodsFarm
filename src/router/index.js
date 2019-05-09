@@ -8,6 +8,7 @@ import GoodsDetail from '@/components/GoodsDetail'
 import Bucket from '@/components/Bucket'
 import AddGoods from '@/components/AddGoods'
 import Card from '@/components/elements/Card'
+import CardList from '@/components/elements/CardList'
 Vue.use(Router)
 
 export default new Router({
@@ -52,6 +53,12 @@ export default new Router({
       name: 'Card',
       props: true,
       component: Card
+    },
+    {
+      path: '/cardlist',
+      name: 'CardList',
+      props: true,
+      component: CardList
     },
   ]
 })
