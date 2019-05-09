@@ -1,6 +1,9 @@
 <template>
 <div class="container-fluid"> 
     <div class="card">
+        
+            <!-- <h1>mmm</h1> -->
+        
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
@@ -100,26 +103,27 @@
                                     <div class="col-md-9">
                                         <!-- <img src="../assets/image_empty.png" alt="Smiley face" height="90" width="90" @click="onPickFile">
                                         <input type="file" style="display:none" ref="fileInput" accept="image/*" > -->
-                                        <div class="field">
-  <div class="file is-centered is-boxed is-success has-name">
+                                        
+                                           
+                                           
+                                           <div class="field">
+  <div class="file is-danger has-name is-boxed">
     <label class="file-label">
-      <input class="file-input" id="file-upload"  type="file" name="resume" >
-      <div id="file-upload-filename"></div>
+      <input class="file-input" @change="updateList()" id="file" type="file" name="resume">
       <span class="file-cta">
         <span class="file-icon">
-          <i class="fas fa-upload"></i>
+          <i class="fas fa-cloud-upload-alt"></i>
         </span>
         <span class="file-label">
-          Centered file…
+          Danger file…
         </span>
       </span>
-      <span id="blah" class="file-name">
-        
+      <span class="file-name">
+        {{filename}}
       </span>
     </label>
   </div>
 </div>
-                  
                                     </div>
                                 </div>
                             </div>
@@ -133,9 +137,10 @@
             </div> -->
                             <div class="field is-grouped is-grouped-right" style="margin-top: 10px">
                                 <p class="control">
-                                    <a class="button is-primary">
-                                    Submit
+                                    <a type="submit"  class="button is-primary">
+                                        Submit
                                     </a>
+                                    
                                 </p>
                                 <p class="control">
                                     <a @click="GoToSell()" class="button is-light">
@@ -154,6 +159,7 @@
                     </div>
                 </div>
             </div>
+     
         </div>
     </div>
 </template>
@@ -172,7 +178,7 @@ export default {
                 u_price:' ',
                 quantity:' '
             },
-            file:''
+            filename:'Choose file'
         }
     },
     mounted () {
@@ -180,7 +186,12 @@ export default {
     },
     
     methods:{
-        showFileName() {
+        updateList() {
+  var input = document.getElementById('file');
+  
+console.log(input.files.item(0).name)
+this.filename = input.files.item(0).name
+
   
 },
         GoToSell(){
