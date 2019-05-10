@@ -189,6 +189,7 @@ export default {
                     alert("Regist success, let go to login.");
                     window.location.reload();
                   } else {
+                    console.log(response.data.status)
                     alert("Regist fail, please try again.");
                   }
                 })
