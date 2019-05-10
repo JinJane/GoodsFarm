@@ -78,6 +78,13 @@
         
   
         </section>
+        <div class="text-right set-bot">
+ <router-link to="/">
+                <b-button class="button-set" variant="warning">Go to Home</b-button>
+              </router-link>
+              </div>
+              </div>
+</template>
     
     </div>
 </template>

@@ -1,8 +1,12 @@
 <template>
 <div class="container"> 
  <chart  ref='chart' :type="'bar'" :data="data" :options="options"></chart>
-</div>
- 
+<div class="text-right set-bot">
+ <router-link to="/">
+                <b-button class="button-set" variant="warning">Go to Home</b-button>
+              </router-link>
+              </div>
+              </div>
 </template>
  
 <script>
@@ -41,7 +45,7 @@ export default {
   },
   mounted(){
      axios.post(
-          "http://localhost:3000/api/order/graph",{username:""}
+          "https://goodsfarm-backend-garking.c9users.io/api/order/graph",{username:""}
         )
         .then((response) => {
           this.data.datasets[0].data[0] = response.data.Meat.n
@@ -58,3 +62,8 @@ export default {
   }
 }
 </script>
+<style>
+.set-bot{
+  margin-top: 100px
+}
+</style>

@@ -147,14 +147,13 @@
 import axios from "axios";
 export default {
   name: "Profile",
-  props:["user"],
   beforeMount() {
     // if (typeof Storage !== "undefined") {
     //   if (localStorage.check == 1) {
     // this.$router.push("/contacts");
     //window.localStorage.username = "jane";
     let username = {
-      username: this.user.username
+      username: window.localStorage.username
     };
     console.log(username);
     axios

@@ -51,7 +51,8 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="navbar-item is-fluid">
+                <router-link to="/graph">
+                <a class="navbar-item is-fluid">
                 <span class="icon is-large has-text-warning" size="2rem x 2rem	">
                   <i class="fas fa-chart-line fa-2x" aria-hidden="true"></i>
                 </span>
@@ -59,6 +60,8 @@
                   <strong>Graph</strong>
                 </span>
               </a>
+                </router-link>
+              
             </div>
           </div>
 
