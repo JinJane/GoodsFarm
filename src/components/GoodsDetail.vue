@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="section">
-      <div class="card" style="margin-top:20px">
+      <div class="card" style="margin-top:10px">
         <!-- {{data.img}}
         https://goodsfarm-backend-garking.c9users.io/getpicture/{{data.img}}-->
         <div class="columns">
           <figure class="card-image is-480x480 column is-one-thirds" >
             <img
               v-bind:src="'https://goodsfarm-backend-garking.c9users.io/getpicture/'+data.img"
-              style="height: 300px; width: 480px ; margin-top:20px;margin-left:20px"
+              style="height: 300px; width: 480px ; margin-top:20px;margin-left:20px;border: 2px solid transparent; border-color: #9BCA91;"
             >
           </figure>
           <div class="card-content column is-two-thirds" >

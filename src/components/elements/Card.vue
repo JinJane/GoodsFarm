@@ -2,10 +2,10 @@
 <div>
   <div class="card"  style="margin: 5px 2px 5px 2px">
       <!-- {{data.img}} -->
-    <div class="card-image  ">
-      <figure class="image is-480x480">
+    <div class="card-image  " style="border: 2px solid transparent; border-color: #9BCA91;">
+      <figure class="image is-480x480" >
         <!-- <img src="https://goodsfarm-backend-garking.c9users.io/getpicture/"+{{data.img}} alt="Placeholder image"> -->
-        <img v-bind:src="'https://goodsfarm-backend-garking.c9users.io/getpicture/' +data.img" alt="Placeholder image" style="height: 200px;">
+        <img v-bind:src="'https://goodsfarm-backend-garking.c9users.io/getpicture/' +data.img" alt="Placeholder image" style="height: 200px; ">
       </figure>
     </div>
     <div class="card-content is-clearfix" >
