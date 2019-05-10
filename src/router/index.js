@@ -10,6 +10,7 @@ import AddGoods from '@/components/AddGoods'
 import Graph from '@/components/Graph'
 import Card from '@/components/elements/Card'
 import CardList from '@/components/elements/CardList'
+import EditDataGoods from '@/components/EditDataGoods'
 Vue.use(Router)
 
 export default new Router({
@@ -68,3 +69,4 @@ export default new Router({
     },
   ]
 })
+EditDataGoods
