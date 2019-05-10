@@ -14,13 +14,12 @@
                         </div>
 
                         <div class="card-content__text">
-                            <p>{{data.describe}}</p>
+                            <!-- <p>{{data.describe}}</p> -->
                         </div>
 
                         <div class="card-content__text is-pulled-left " style="margin-top: 20px;  height: 200px;"> 
             <p>
-                           <strong>Product details : </strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud
+                           <strong>Product details : </strong> {{data.describe}}
             </p>
           </div>
 

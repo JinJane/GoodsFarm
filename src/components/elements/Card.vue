@@ -99,12 +99,15 @@ export default {
     data(){
       return{
         statusUser:false,
-        modalShow:''
+        modalShow:'',
+        //username:''
       }
     },
     beforeMount(){
       if(this.state =='sell') this.statusUser=true
       else this.statusUser = false
+      //this.username= window.localStorage.username
+
     },
     methods:{
       

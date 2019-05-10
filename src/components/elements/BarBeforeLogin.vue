@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div style="height: 20px">
+    <nav class="navbar" role="navigation" aria-label="main navigation" style="padding: 0px; ">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" href="https://bulma.io" style="padding: 0px 16px 0px 16px">
           <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div id="navbarBasicExample" class="navbar-menu" style="padding: 0px">
         <div class="navbar-start">
           <!-- <a class="navbar-item is-fluid" @click="checklogin">
             <span class="icon is-large has-text-danger" size="2rem x 2rem	">
@@ -45,9 +45,9 @@
         </div>
 
         <div class="navbar-end">
-          <div class="navbar-item">
+          <div class="navbar-item" style="padding: 0px 16px 0px 16px">
             <div class="buttons">
-              <a class="button is-medium" v-on:click="modalShow='is-active'">
+              <a class="button " v-on:click="modalShow='is-active'">
                 <span class="icon has-text-link">
                   <i class="fas fa-user-plus"></i>
                 </span>
@@ -107,7 +107,7 @@
                 <button class="modal-close is-large" aria-label="close" v-on:click="modalShow=' '">x</button>
               </div>
 
-              <a class="button is-medium" v-on:click="modalGo='is-active'">
+              <a class="button " v-on:click="modalGo='is-active'">
                 <span class="icon" style="color:#97cd76;">
                   <i class="fas fa-sign-in-alt"></i>
                 </span>
