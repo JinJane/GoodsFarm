@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="margin-top: 80px">
         <section class="main-content columns is-fullheight">
   
             <aside class="column is-3 is-narrow-mobile is-fullheight section is-hidden-mobile">
