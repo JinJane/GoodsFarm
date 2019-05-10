@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid">
-    <div class="card" style="margin-top: 80px">
+  <div id="add" class="container-fluid">
+    <div class="card" style="margin-top: 40px">
       <!-- <h1>mmm</h1> -->
 
       <div class="card-body">
@@ -128,6 +128,7 @@
                         type="number"
                         placeholder="Price your goods"
                         v-model="data.u_price"
+                        min="0"
                       >
                       <input
                         v-if="checkData.u_price== false"
@@ -135,6 +136,7 @@
                         type="number"
                         placeholder="Price your goods"
                         v-model="data.u_price"
+                        min="0"
                       >
                       <span class="icon is-small is-left">
                         <i class="fas fa-angle-double-right"></i>
@@ -159,6 +161,7 @@
                         type="number"
                         placeholder="Quantity of your goods"
                         v-model="data.quantity"
+                        min="1"
                       >
                       <input
                         v-if="checkData.quantity== false"
@@ -166,6 +169,7 @@
                         type="number"
                         placeholder="Quantity of your goods"
                         v-model="data.quantity"
+                        min="1"
                       >
                       <span class="icon is-small is-left">
                         <i class="fas fa-angle-double-right"></i>
@@ -297,8 +301,18 @@ export default {
                 // this.$router.push( '/mainpage' );
                
                 // window.location.reload()
-                console.log('OK')
-                this.send_info()
+                if(this.data.u_price > 0 && this.data.quantity >0) {
+                  console.log('OK')
+                  //this.send_info()
+                }
+                else{
+                  if(this.data.u_price<0) this.checkData.u_price=false
+                  if(this.data.u_price>0) this.checkData.u_price=true
+
+                  if(this.data.quantity<0) this.checkData.quantity=false
+                  if(this.data.quantity>0) this.checkData.quantity=true
+                }
+                
             }               
             else{
                 if(this.data.name=='') this.checkData.name=false
@@ -315,6 +329,12 @@ export default {
 
                 if(this.data.img=='Choose file') this.checkData.img=false
                 if(this.data.img!='Choose file') this.checkData.img=true
+
+                if(this.data.u_price<0) this.checkData.u_price=false
+                  if(this.data.u_price>0) this.checkData.u_price=true
+
+                  if(this.data.quantity<0) this.checkData.quantity=false
+                  if(this.data.quantity>0) this.checkData.quantity=true
             }         
       // if()
     },
@@ -392,6 +412,9 @@ input[type="submit"] {
   cursor: pointer;
   float: right;
 }
+
+
+
+
+
 </style>
-
-

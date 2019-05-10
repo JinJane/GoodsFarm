@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-page">
+  <div id="profile" class="profile-page">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-3 order-lg-2">
@@ -17,7 +17,7 @@
         <h1 class="title is-1">{{this.username}}</h1>
       </div>
       <br>
-      <b-card class="card-info" shadow no-body bg-variant="light">
+      <b-card class="card-info" shadow no-body bg-variant="light" style="margin-bottom: 0px">
         <div class="mt-5 text-center">
           <!-- <b-card bg-variant="light"> -->
           <b-form-group
@@ -348,5 +348,20 @@ h5 {
 }
 .input-set {
   margin-right: 100px;
+}
+</style>
+<style scoped>
+#profile{
+    background: url('https://image.freepik.com/free-photo/high-angle-view-human-hand-planting-fresh-young-plant-into-soil_23-2147948276.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;background: src('https://image.freepik.com/free-photo/high-angle-view-human-hand-planting-fresh-young-plant-into-soil_23-2147948276.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0%
 }
 </style>
