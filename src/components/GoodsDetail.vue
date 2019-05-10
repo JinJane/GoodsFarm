@@ -8,7 +8,7 @@
           <figure class="card-image is-480x480 column is-one-thirds" >
             <img
               v-bind:src="'https://goodsfarm-backend-garking.c9users.io/getpicture/'+data.img"
-              style="height: 300px; width: 480px"
+              style="height: 300px; width: 480px ; margin-top:20px;margin-left:20px"
             >
           </figure>
           <div class="card-content column is-two-thirds" >
@@ -29,7 +29,7 @@
               </p>
             </div>
 
-            <div class="card-content__price is-pulled-right" style="margin-top:300px;margin-right:50px;">
+            <div class="card-content__price is-pulled-right" style="margin-top:150px;margin-right:50px;">
               <span class="title is-3">
                 <strong>{{ data.u_price }}</strong>
               </span>
