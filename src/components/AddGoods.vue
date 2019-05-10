@@ -303,7 +303,7 @@ export default {
                 // window.location.reload()
                 if(this.data.u_price > 0 && this.data.quantity >0) {
                   console.log('OK')
-                  //this.send_info()
+                  this.send_info()
                 }
                 else{
                   if(this.data.u_price<0) this.checkData.u_price=false
