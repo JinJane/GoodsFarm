@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div style="height: 20px;">
+    <nav class="navbar is-warning" role="navigation" aria-label="main navigation" style="padding: 0px; ">
       <div class="navbar-brand">
         <router-link to="/profile">
-          <a class="navbar-item" href="https://bulma.io">
+          <a class="navbar-item" href="https://bulma.io" style="padding: 0px 16px 0px 16px">
           <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
           </a>
         </router-link>

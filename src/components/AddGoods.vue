@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-md-9">
                       <!-- <textarea class="form-control" id="textarea-input" name="textarea-input"  placeholder="Content.."></textarea> -->
-                      <textarea class="textarea is-rounded" placeholder="Detail your goods" rows="8" type="text"></textarea>
+                      <textarea class="textarea is-rounded" placeholder="Detail your goods" rows="8" type="text" v-model="data.descrip"></textarea>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -275,7 +275,8 @@ export default {
         name: "",
         u_price: "",
         quantity: "",
-        img:""
+        img:"",
+        descrip:""
       },
       file: "",
       filename: "Choose file"

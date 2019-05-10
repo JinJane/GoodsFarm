@@ -1,6 +1,7 @@
 <template>
-  <div style="height: 20px">
-    <nav class="navbar" role="navigation" aria-label="main navigation" style="padding: 0px; ">
+  <div style="height: 20px;" >
+    
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation" style="padding: 0px; ">
       <div class="navbar-brand">
         <a class="navbar-item" href="https://bulma.io" style="padding: 0px 16px 0px 16px">
           <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
