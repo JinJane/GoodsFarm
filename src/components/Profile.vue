@@ -1,25 +1,23 @@
 <template>
   <div class="profile-page">
     <div class="container">
-      
-        <div class="row justify-content-center">
-          <div class="col-lg-3 order-lg-2">
-            <div class="card-profile-image">
-              <figure class="image is-1by1">
-                <img
-                  class="is-rounded"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxUJhFHfgEzYjVcTgVxwX_dA4s1RvIwYzVhSpPNwBaoZQm1SxX9Q"
-                >
-              </figure>
-            </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-3 order-lg-2">
+          <div class="card-profile-image">
+            <figure class="image is-1by1">
+              <img
+                class="is-rounded"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxUJhFHfgEzYjVcTgVxwX_dA4s1RvIwYzVhSpPNwBaoZQm1SxX9Q"
+              >
+            </figure>
           </div>
         </div>
-        <div class="text-center mt-5">
-          <h1 class="title is-1">{{this.username}}</h1>
-          
-        </div>
-        <br>
-        <b-card shadow no-body bg-variant="light">
+      </div>
+      <div class="text-center mt-5">
+        <h1 class="title is-1">{{this.username}}</h1>
+      </div>
+      <br>
+      <b-card class="card-info" shadow no-body bg-variant="light">
         <div class="mt-5 text-center">
           <!-- <b-card bg-variant="light"> -->
           <b-form-group
@@ -35,7 +33,7 @@
               label-align-sm="right"
               label-for="nested-street"
             >
-              <b-form-input id="nested-street" v-model="profile.username"></b-form-input>
+              <b-form-input id="input-set" v-model="profile.username"></b-form-input>
             </b-form-group>
 
             <b-form-group
@@ -44,7 +42,7 @@
               label-align-sm="right"
               label-for="nested-street"
             >
-              <b-form-input id="nested-street" v-model="profile.name"></b-form-input>
+              <b-form-input id="input-set" v-model="profile.name"></b-form-input>
             </b-form-group>
 
             <b-form-group
@@ -53,7 +51,7 @@
               label-align-sm="right"
               label-for="nested-city"
             >
-              <b-form-input id="nested-city" v-model="profile.surname"></b-form-input>
+              <b-form-input id="input-set" v-model="profile.surname"></b-form-input>
             </b-form-group>
 
             <b-form-group
@@ -62,7 +60,7 @@
               label-align-sm="right"
               label-for="nested-state"
             >
-              <b-form-input id="nested-state" v-model="profile.email"></b-form-input>
+              <b-form-input id="input-set" v-model="profile.email"></b-form-input>
             </b-form-group>
 
             <b-form-group
@@ -71,7 +69,7 @@
               label-align-sm="right"
               label-for="nested-country"
             >
-              <b-form-input id="nested-country" v-model="profile.id_card"></b-form-input>
+              <b-form-input id="input-set" v-model="profile.id_card"></b-form-input>
             </b-form-group>
 
             <b-form-group
@@ -80,7 +78,7 @@
               label-align-sm="right"
               label-for="nested-country"
             >
-              <b-form-input id="nested-country" v-model="profile.tel"></b-form-input>
+              <b-form-input id="input-set" v-model="profile.tel"></b-form-input>
             </b-form-group>
 
             <b-form-group
@@ -89,7 +87,7 @@
               label-align-sm="right"
               label-for="nested-country"
             >
-              <b-form-textarea id="nested-country" v-model="profile.address"></b-form-textarea>
+              <b-form-textarea id="input-set" v-model="profile.address"></b-form-textarea>
             </b-form-group>
             <div class="text-right">
               <div class="modal">
@@ -99,12 +97,16 @@
                 </div>
                 <button class="modal-close is-large" aria-label="close"></button>
               </div>
-              <b-button variant="secondary" v-on:click="modalShow='is-active'">Reset Password</b-button>
+              <b-button
+                class="button-set"
+                variant="secondary"
+                v-on:click="modalShow='is-active'"
+              >Reset Password</b-button>
               <router-link to="/">
-                <b-button variant="danger">cancel</b-button>
+                <b-button class="button-set" variant="danger">cancel</b-button>
               </router-link>
 
-              <b-button variant="primary" @click="setprofile">Submit</b-button>
+              <b-button class="button-set" variant="primary" @click="setprofile">Submit</b-button>
             </div>
           </b-form-group>
           <!-- </b-card> -->
@@ -127,8 +129,9 @@
                         <!-- minlength="6" -->
                       </b-input>
                     </b-form-group>
-
-                    <b-button @click="checkpass">Confirm</b-button>
+                  </div>
+                  <div class="text-right">
+                    <b-button @click="checkpass" variant="danger" class="has-text-centered">Confirm</b-button>
                   </div>
                 </section>
               </div>
@@ -144,14 +147,16 @@
 import axios from "axios";
 export default {
   name: "Profile",
+  props:["user"],
   beforeMount() {
     // if (typeof Storage !== "undefined") {
     //   if (localStorage.check == 1) {
     // this.$router.push("/contacts");
-
+    //window.localStorage.username = "jane";
     let username = {
-      username: "garking"
+      username: this.user.username
     };
+    console.log(username);
     axios
       .post(
         "https://goodsfarm-backend-garking.c9users.io/api/profile/getinfo",
@@ -166,6 +171,8 @@ export default {
         this.id_card = response.data.id_card;
         this.tel = response.data.tel;
         this.address = response.data.address;
+        this.forcheck = response.data.username;
+        // console.log(response.data);
       })
       .catch(error => {
         console.log(error);
@@ -183,51 +190,94 @@ export default {
   data() {
     return {
       profile: [],
-      PutPro: {},
       username: "",
-      name: "",
-      surname: "",
-      email: "",
-      id_card: "",
-      tel: "",
-      address: "",
       modalShow: "",
       Old: "",
       New: "",
-      ConfirmPass: ""
+      ConfirmPass: "",
+      forcheck:""
     };
   },
   methods: {
     setprofile() {
-      if (this.username !== this.profile.username)
-        this.PutPro.username = this.profile.username;
-      if (this.name !== this.profile.name) this.PutPro.name = this.profile.name;
-      if (this.surname !== this.profile.surname)
-        this.PutPro.surname = this.profile.surname;
-      if (this.email !== this.profile.email)
-        this.PutPro.email = this.profile.email;
-      if (this.id_card !== this.profile.id_card)
-        this.PutPro.id_card = this.profile.id_card;
-      if (this.tel !== this.profile.tel) this.PutPro.tel = this.profile.tel;
-      if (this.address !== this.profile.address)
-        this.PutPro.address = this.profile.address;
-
-      let NewProfile = {
-        key: this.username
+      // console.log(NewProfile);
+if(this.forcheck!==this.profile.username){
+let user = {
+        username: this.profile.username
       };
-      // var obj = JSON.parse(NewProfile);
-      // obj.push(this.PutPro);
-      // NewProfile = JSON.stringify(obj);
-      console.log(NewProfile);
-      // axios
-      // .post("https://goodsfarm-backend-garking.c9users.io/api/profile/getinfo",username)
-      // .then(response => {
-      //   this.profile = response.data;
-      //   console.log(this.profile);
-      // })
-      // .catch(error => {
-      //   console.log(error);
-      // });
+      axios
+        .post(
+          "https://goodsfarm-backend-garking.c9users.io/api/profile/checkuser",
+          user
+        )
+        .then(response => {
+          console.log(response.data);
+          if (response.data == "Can use this Username") {
+            window.localStorage.username = this.profile.username;
+            console.log(window.localStorage.username);
+
+            let NewProfile = {
+              key: this.username,
+              username: this.profile.username,
+              name: this.profile.name,
+              surname: this.profile.surname,
+              email: this.profile.email,
+              id_card: this.profile.id_card,
+              tel: this.profile.tel,
+              address: this.profile.address
+            };
+            axios
+              .post(
+                "https://goodsfarm-backend-garking.c9users.io/api/profile/update",
+                NewProfile
+              )
+              .then(response => {
+                window.location.reload();
+                alert("Change profile is success.")
+              })
+              .catch(error => {
+                console.log(error);
+              });
+          } else {
+            alert(
+              "Your username is same other user, please change your username."
+            );
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
+
+}else{
+let NewProfile = {
+              key: this.username,
+              username: this.profile.username,
+              name: this.profile.name,
+              surname: this.profile.surname,
+              email: this.profile.email,
+              id_card: this.profile.id_card,
+              tel: this.profile.tel,
+              address: this.profile.address
+            };
+            axios
+              .post(
+                "https://goodsfarm-backend-garking.c9users.io/api/profile/update",
+                NewProfile
+              )
+              .then(response => {
+                window.location.reload();
+                alert("Change profile is success.")
+              })
+              .catch(error => {
+                console.log(error);
+              });
+}
+
+
+
+
+      
     },
     checkpass() {
       console.log("sssss");
@@ -249,32 +299,27 @@ export default {
             };
             console.log(repass);
 
-axios
-          .post(
-            "https://goodsfarm-backend-garking.c9users.io/api/profile/repass",
-            repass
-          )
-          .then(response => {
-console.log(response.data.data)
-if(response.data.data=="Wrong password"){
-  alert("Can not change password, please try again.")
-}
-if(response.data.data=="OK"){
-  alert("Change password is success.");
-  this.modalShow = ' '
-  this.Old='',
-  this.New='',
-  this.ConfirmPass=''
-}
-          })
-          .catch(error => {
-            console.log(error);
-          });
-
+            axios
+              .post(
+                "https://goodsfarm-backend-garking.c9users.io/api/profile/repass",
+                repass
+              )
+              .then(response => {
+                console.log(response.data.data);
+                if (response.data.data == "Wrong password") {
+                  alert("Can not change password, please try again.");
+                }
+                if (response.data.data == "OK") {
+                  alert("Change password is success.");
+                  this.modalShow = " ";
+                  (this.Old = ""), (this.New = ""), (this.ConfirmPass = "");
+                }
+              })
+              .catch(error => {
+                console.log(error);
+              });
           }
         }
-
-        
       }
     }
   }
@@ -295,7 +340,14 @@ h5 {
   margin-right: 50px;
   margin-left: 50px;
 }
-.b-form-input{
-  width: 10px
+.card-info {
+  margin-bottom: 200px;
+  padding: 20px;
+}
+.button-set {
+  margin-bottom: 10px;
+}
+.input-set {
+  margin-right: 100px;
 }
 </style>

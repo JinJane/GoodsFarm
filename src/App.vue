@@ -1,26 +1,52 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    
-    <BarBeforeLogin/>
-    <BarAfterLogin/>
+    <div v-show="!logined">
+      <BarBeforeLogin/>
+    </div>
+    <div v-show="logined">
+      <BarAfterLogin/>
+    </div>
+
     <router-view/>
   </div>
 </template>
 
 <script>
-import BarBeforeLogin from '@/components/elements/BarBeforeLogin'
-import BarAfterLogin from '@/components/elements/BarAfterLogin'
+import axios from "axios";
+import BarBeforeLogin from "@/components/elements/BarBeforeLogin";
+import BarAfterLogin from "@/components/elements/BarAfterLogin";
 export default {
-  name: 'App',
-  components:{BarBeforeLogin,BarAfterLogin}
-}
+  name: "App",
+  beforeMount() {
+    console.log(window.localStorage.username);
+    console.log(window.localStorage.keyy);
+
+    if (window.localStorage.username) {
+      if (window.localStorage.key) {
+        this.logined = true;
+      } else {
+        this.logined = false
+      }
+    } else {
+      this.logined = false
+    }
+  },
+  data() {
+    return {
+      logined: "",
+      username: "",
+      key: ""
+    };
+  },
+  components: { BarBeforeLogin, BarAfterLogin }
+};
 </script>
 
 <style lang="scss" src="./global-style.scss" >
 /* jane */
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
@@ -35,6 +61,5 @@ export default {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; */
-
 }
 </style>

@@ -160,7 +160,7 @@
 
 <script>
 export default {
-    
+    name: "AddGoods",
     data(){
         return{
             selected:0,
