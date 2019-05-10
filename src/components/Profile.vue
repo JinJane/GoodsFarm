@@ -7,7 +7,7 @@
             <figure class="image is-1by1">
               <img
                 class="is-rounded"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxUJhFHfgEzYjVcTgVxwX_dA4s1RvIwYzVhSpPNwBaoZQm1SxX9Q"
+                src="../../src/assets/home.png"
               >
             </figure>
           </div>
