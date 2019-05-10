@@ -1,25 +1,41 @@
 <template>
 <div>
   <div class="card">
-      
-    <div class="card-image ">
-      <figure class="image ">
-        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+      {{data.img}}
+    <div class="card-image  ">
+      <figure class="image is-480x480">
+        <!-- <img src="https://goodsfarm-backend-garking.c9users.io/getpicture/"+{{data.img}} alt="Placeholder image"> -->
+        <img v-bind:src="'https://goodsfarm-backend-garking.c9users.io/getpicture/' +data.img" alt="Placeholder image" style="height: 200px;">
       </figure>
     </div>
-    <div class="card-content" >
+    <div class="card-content" style="padding: 10px;">
       <div class="media">
         <div class="media-content">
           <p class="title is-4">{{data.name}} </p>
         </div>
       </div>
       <div class="content is-clearfix">
-        <div>
-          <p style="height: 100px;"> {{data.describe}} </p>
+        <div style="height: 100px;">
+         
+            <!-- <p>{{data.name}} </p>
+            <p>{{data.name}} </p> -->
+            
+            <div class="columns" style="padding: 3px;">
+              <div class="column is-two-fifth is-pulled-right">ผู้ขาย</div>
+              <div class="column is-pulled-right">: {{data.username}}</div>
+             </div>  
+          
+            <div class="columns" style="padding: 3px;">
+              <div class="column is-two-fifth is-pulled-right">ผู้ขาย</div>
+              <div class="column is-pulled-right">: {{data.username}}</div>
+             </div>  
+            {{data.type}}
+            
+           
         </div>
         
         <p class="is-pulled-right">
-          <span class="title is-4"><strong>&euro;  {{data.u_price}} </strong></span>
+          <span class="title is-4"><strong>&dollar;  {{data.u_price}} </strong></span>
         </p>
       </div>
       <div  class="card-footer btn-actions" v-if="m==true">

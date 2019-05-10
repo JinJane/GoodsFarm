@@ -1,16 +1,16 @@
 <template>
   <div class="container-fluid">
-    <div class="card">
+    <div class="card" >
       <!-- <h1>mmm</h1> -->
 
       <div class="card-body">
         <div class="row">
           <div class="col-md-6">
-            <div class="card">
+            <div class="card" >
               <div class="card-header">
                 <strong>ข้อมูลทั่วไป</strong>
               </div>
-              <div class="card-body">
+              <div class="card-body" style="height: 392px;">
                 <form class="form-horizontal" action>
                   <div class="form-group row">
                     <label class="col-md-3 col-form-label" for="text-input">*ชื่อสินค้า</label>
@@ -34,7 +34,7 @@
                     <label class="col-md-3 col-form-label" type="text">*รายละเอียดสินค้า</label>
                     <div class="col-md-9">
                       <!-- <textarea class="form-control" id="textarea-input" name="textarea-input"  placeholder="Content.."></textarea> -->
-                      <textarea class="textarea" placeholder="Textarea" rows="7" type="text"></textarea>
+                      <textarea class="textarea" placeholder="Textarea" rows="8" type="text"></textarea>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -61,7 +61,7 @@
                   </div>
                 </form>
               </div>
-              <div class="card-footer"></div>
+              
             </div>
           </div>
           <div class="col-md-6">

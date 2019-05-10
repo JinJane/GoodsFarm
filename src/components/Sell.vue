@@ -62,14 +62,14 @@
                     <li>
                         <a @click="GoToAddGoods()">
                             <span class="icon has-text-danger"><i class="fas fa-plus"></i></span>
-                            <span><strong>Add Goods</strong></span>
+                            <span><strong>ADD GOODS</strong></span>
                         </a>
                     </li>
                 </ul>
             </aside>
             
         <!-- {{getGoodsShow}} -->
-        <div  class="container container is-fluid " >
+        <div  class="container container " >
             <div class="is-active">
                 <CardList :Goods="getGoodsShow" :state="'sell'" ></CardList>
             </div>
