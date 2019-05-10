@@ -65,101 +65,90 @@
             </div>
           </div>
           <div class="col-md-6">
-            <form
-              action="https://goodsfarm-backend-garking.c9users.io/profile/garking"
-              method="post"
-              enctype="multipart/form-data"
-            >
-              <div class="card">
-                <div class="card-header">
-                  <strong>ข้อมูลการขาย</strong>
-                </div>
-                <div class="card-body">
-                  <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="text-input">*ราคา</label>
-                    <div class="col-md-9">
-                      <!-- <input class="form-control" id="text-input" type="text" name="text-input" placeholder="฿"> -->
-                      <div class="control has-icons-left has-icons-right">
-                        <input
-                          class="input"
-                          type="text"
-                          placeholder="Text input"
-                          v-model="data.u_price"
-                        >
-                        <span class="icon is-small is-left">
-                          <i class="fas fa-user"></i>
-                        </span>
-                      </div>
+            <div class="card">
+              <div class="card-header">
+                <strong>ข้อมูลการขาย</strong>
+              </div>
+              <div class="card-body">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">*ราคา</label>
+                  <div class="col-md-9">
+                    <!-- <input class="form-control" id="text-input" type="text" name="text-input" placeholder="฿"> -->
+                    <div class="control has-icons-left has-icons-right">
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Text input"
+                        v-model="data.u_price"
+                      >
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                      </span>
                     </div>
                   </div>
-                  <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="text-input">*คลัง</label>
-                    <div class="col-md-9">
-                      <div class="control has-icons-left has-icons-right">
-                        <input
-                          class="input"
-                          type="text"
-                          placeholder="Text input"
-                          v-model="data.quantity"
-                        >
-                        <span class="icon is-small is-left">
-                          <i class="fas fa-user"></i>
-                        </span>
-                      </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">*คลัง</label>
+                  <div class="col-md-9">
+                    <div class="control has-icons-left has-icons-right">
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Text input"
+                        v-model="data.quantity"
+                      >
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-header">
-                  <strong>การจัดการสื่อ</strong>
-                </div>
-                <div class="card-body">
-                  <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="text-input">ภาพสินค้า</label>
-                    <div class="col-md-9">
-                      <div class="field">
-                        <div class="file is-danger has-name is-boxed">
-                          <label class="file-label">
-                            <input
-                              class="file-input"
-                              @change="updateList()"
-                              id="file"
-                              type="file"
-                              name="avatar"
-                            >
-                            <span class="file-cta">
-                              <span class="file-icon">
-                                <i class="fas fa-cloud-upload-alt"></i>
-                              </span>
-                              <span class="file-label">Danger file…</span>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <strong>การจัดการสื่อ</strong>
+              </div>
+              <div class="card-body">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">ภาพสินค้า</label>
+                  <div class="col-md-9">
+                    <div class="field">
+                      <div class="file is-danger has-name is-boxed">
+                        <label class="file-label">
+                          <input
+                            class="file-input"
+                            @change="updateList()"
+                            id="file"
+                            type="file"
+                            ref="file"
+                            name="avatar"
+                          >
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fas fa-cloud-upload-alt"></i>
                             </span>
-                            <span class="file-name">{{filename}}</span>
-                          </label>
-                        </div>
+                            <span class="file-label">Danger file…</span>
+                          </span>
+                          <span class="file-name">{{filename}}</span>
+                        </label>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div>
-                <!-- <div class="col-md-6 offset-md-9 col-form-label">
-              <button class="btn btn-sm btn-primary" type="submit">
-                <i class="fa fa-dot-circle-o"></i> Submit</button>
-              <button class="btn btn-sm btn-danger" type="reset">
-                <i class="fa fa-ban"></i> Reset</button>
-                </div>-->
-                <div class="field is-grouped is-grouped-right" style="margin-top: 10px">
-                  <p class="control">
-                    <input type="submit" v-on:click=" send_info">
-                  </p>
-                  <p class="control">
-                    <a @click="GoToSell()" class="button is-light">Cancel</a>
-                  </p>
-                </div>
-                <div></div>
+            </div>
+            <div>
+              <div class="field is-grouped is-grouped-right" style="margin-top: 10px">
+                <p class="control">
+                  <input type="submit" v-on:click=" send_info">
+                </p>
+                <p class="control">
+                  <a @click="GoToSell()" class="button is-light">Cancel</a>
+                </p>
               </div>
-            </form>
+              <div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -178,8 +167,10 @@ export default {
         type: " ",
         name: " ",
         u_price: " ",
-        quantity: " "
+        quantity: " ",
+        img:" "
       },
+      file: "",
       filename: "Choose file"
     };
   },
@@ -190,9 +181,9 @@ export default {
   methods: {
     updateList() {
       var input = document.getElementById("file");
-
       console.log(input.files.item(0).name);
       this.filename = input.files.item(0).name;
+      this.file = this.$refs.file.files[0];
     },
     GoToSell() {
       this.$router.push("/sell");
@@ -205,12 +196,38 @@ export default {
     },
     send_info() {
       axios
-        .post("https://goodsfarm-backend-garking.c9users.io/api/item/sell",this.data)
-        .then(function(response) {
+        .post(
+          "https://goodsfarm-backend-garking.c9users.io/api/item/sell",
+          this.data
+        )
+        .then(response => {
           console.log(response);
+          //  this.$router.push('/')
+          this.submitFile();
         })
         .catch(function(error) {
           console.log(error);
+        });
+    },
+    submitFile() {
+      let formData = new FormData();
+      formData.append("avatar", this.file);
+      axios
+        .post(
+          "https://goodsfarm-backend-garking.c9users.io/profile/garking",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data"
+            }
+          }
+        )
+        .then(function(res) {
+          console.log("SUCCESS!!");
+          console.log(res);
+        })
+        .catch(function() {
+          console.log("FAILURE!!");
         });
     }
   }
@@ -231,3 +248,5 @@ input[type="submit"] {
   float: right;
 }
 </style>
+
+
