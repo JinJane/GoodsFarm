@@ -35,7 +35,7 @@
               <h1>Total: {{n.u_price*n.quantity}} $</h1>
             </b-col>
             <b-col>
-              <a class="button is-medium" v-on:click="showlocation(n.buyer)">
+              <a class="button is-medium" v-on:click="Tests(n.buyer)">
                 <!-- modalGo='is-active' -->
                 <span class="icon has-text-danger" style="color:#97cd76;">
                   <i class="fas fa-map-marker-alt"></i>
@@ -146,7 +146,8 @@ export default {
         });
     }
   },
-  showlocation(buy) {
+  Tests(buy) {
+    console.log("GGG")
     this.modalGo = "is-active";
     this.buyer = buy;
     let user = {
