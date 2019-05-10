@@ -238,5 +238,9 @@ import CardList from './elements/CardList'
 .text2 {
   font-size: 24px;
 }
+.set-bot{
+    margin-right: 20px;
+    margin-bottom: 50px
+}
 </style>
 
