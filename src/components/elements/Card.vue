@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="card">
       
     <div class="card-image ">
@@ -24,8 +25,8 @@
       <div  class="card-footer btn-actions" v-if="m==true">
 
         
-          <a href="#" class="card-footer-item"> <span><strong>Edit</strong></span></a>
-          <a href="#" class="card-footer-item"><span><strong>Delete</strong></span></a>
+          <a href="#" class="card-footer-item" @click="GoToEdit()"> <span><strong>Edit</strong></span></a>
+          <a class="card-footer-item" @click="modalShow='is-active'"><span><strong>Delete</strong></span></a>
           
         
         
@@ -47,18 +48,66 @@
     </router-link>
     
   </div>
+  <div v-bind:class="'modal '+modalShow">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Modal title</p>
+                    <button @click="modalShow =''" class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="container">
+                        <h1>Are you sure</h1>
+                        
+                    </div>
+                </section>
+                <footer class="modal-card-foot ">
+                    <div class="field is-grouped is-grouped-right">
+                        <button class="button is-success" @click="deleteItem()">Delete</button>
+                        <button class="button" @click="modalShow =''">Exit</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+  </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
     props: ['data','state'],
     data(){
       return{
-        m:false
+        m:false,
+        modalShow:''
       }
     },
     beforeMount(){
       if(this.state =='sell') this.m=true
       else this.m = false
+    },
+    methods:{
+      GoToEdit(){
+        
+        this.$router.push( {name: 'EditDataGoods',params:{dataEdit : this.data} });
+      },
+      deleteItem(){
+        axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/delete', 
+            {id_item:this.data._id})
+            .then((response) => {
+                console.log(response)
+                
+                
+                // this.$router.push( '/' );
+                window.location.reload()
+            })
+            .catch((error) => {
+                console.log(error)
+            })  
+      },
+      mmm(){
+        // alert("mook")
+        this.modalShow='is-active'
+      }
     }
     
 }
