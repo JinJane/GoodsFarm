@@ -1,29 +1,22 @@
 <template>
+    <!-- เป็นหน้าที่แสดงข้อมูลสินค้าทั้งหมดของผู้ขาย -->
     <div id="sell" style="margin-top: 80px">
-        <section class="main-content columns is-fullheight">
-  
+        <section class="main-content columns is-fullheight">  
             <aside class="column is-3 is-narrow-mobile is-fullheight section is-hidden-mobile">
                 <p class="menu-label is-hidden-touch">Navigation</p>
-                <ul class="menu-list">
-                    <!-- <a @click="clickStock()" style="color: #fff;" > -->
+                <!-- เป็นเมนูที่เลือกได้ว่าจะแสดงข้อมูลสินค้าประเภทไหน -->
+                <ul class="menu-list"> 
                     <li>
                         <a @click="clickStock()"  >
                             <span class="icon has-text-primary"><i class="fas fa-store"></i></span>
                             <span><strong>STOCK</strong></span>
                         </a>
-                        <!-- <a @click="clickStock()">
-                            <span class="icon is-large has-text-danger" size="2rem x 2rem	"><i class="fas dumpster fa-2x " aria-hidden="true"></i></span>
-                            <span><strong>SELL</strong></span>
-                        </a> -->
-
+                        
                         <ul>
                             <li aria-controls="bb">
                                 <a  @click=" clickMeat()"  >
                                     <img src="../assets/steak.png" alt="" style="vertical-align:middle;" height="24px;" width="24px"/>
-                                    <span ><strong>MEAT</strong></span>
-                                    
-                                    
-                                    
+                                    <span ><strong>MEAT</strong></span>    
                                 </a>
                             </li>
                             
@@ -68,26 +61,24 @@
                 </ul>
             </aside>
             
-        <!-- {{getGoodsShow}} -->
-        <div  class="container container "  style=" padding: 0px; margin: 0px">
-            <div class="is-active" style="margin-right: 40px; margin-left: 0px;">
-                <CardList :Goods="getGoodsShow" :state="'sell'" ></CardList>
+
+            <div  class="container container "  style=" padding: 0px; margin: 0px">
+                <div class="is-active" style="margin-right: 40px; margin-left: 0px;">
+                    <CardList :Goods="getGoodsShow" :state="'sell'" ></CardList>
+                </div>
+                
             </div>
-            
-        </div>
         
   
         </section>
         <div class="text-right set-bot">
- <router-link to="/">
+            <router-link to="/">
                 <b-button class="button-set" variant="warning">Go to Home</b-button>
-              </router-link>
-              </div>
-              </div>
-</template>
-    
+            </router-link>
+         </div>
     </div>
 </template>
+
 
 
 <script>
@@ -120,107 +111,71 @@ import CardList from './elements/CardList'
                 this.$router.push( '/order' );
             },
             clickStock(){
-                // alert("Stock")
+
                 this.GoodsShow=this.AllGoodsOfUser
             },
-            clickMeat(){
-                // alert("Meat")
+            clickMeat(){ //เป็น function ที่ get ข้อมูลสินค้าประเภท Meat ของผู้ขาย
+    
                 axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"Meat"})
-                .then((response) => {
-                    //console.log(response.data.data)
-                    
+                .then((response) => {                  
                     this.GoodsShow = response.data.data
-                    
-                    // console.log(response.data)
-
                 })
                 .catch((error) => {
                     console.log(error)
-                })   
-                
+                })                   
             },
-            clickVegetable(){
-                // alert("Vegetable")
+            clickVegetable(){ //เป็น function ที่ get ข้อมูลสินค้าประเภท Vegetable ของผู้ขาย
                 axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"Vegetable"})
-                .then((response) => {
-                    //console.log(response.data.data)
-                    
-                    this.GoodsShow = response.data.data
-                    
-                    // console.log(response.data)
+                    .then((response) => {
+                        this.GoodsShow = response.data.data
 
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
             },
-            clickEgg(){
-                // alert("Egg")
+            clickEgg(){ //เป็น function ที่ get ข้อมูลสินค้าประเภท Egg ของผู้ขาย
                 axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"Egg"})
                 .then((response) => {
-                    //console.log(response.data.data)
-                    
                     this.GoodsShow = response.data.data
-                    
-                    // console.log(response.data)
-
                 })
                 .catch((error) => {
                     console.log(error)
                 })
             },
-            clickFruit(){
-                // alert("Fruit")
+            clickFruit(){ //เป็น function ที่ get ข้อมูลสินค้าประเภท Fruit ของผู้ขาย
                 axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"Fruit"})
                 .then((response) => {
-                    //console.log(response.data.data)
-                    
                     this.GoodsShow = response.data.data
-                    
-                    // console.log(response.data)
 
                 })
                 .catch((error) => {
                     console.log(error)
                 })
             },
-            clickMilk(){
-                // alert("Milk")
+            clickMilk(){ //เป็น function ที่ get ข้อมูลสินค้าประเภท Milk ของผู้ขาย
                 axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"Milk"})
                 .then((response) => {
-                    //console.log(response.data.data)
-                    
                     this.GoodsShow = response.data.data
-                    
-                    // console.log(response.data)
-
                 })
                 .catch((error) => {
                     console.log(error)
                 })
             }
         },
-        beforeMount(){
+        beforeMount(){ //เป็น function ที่ get ข้อมูลสินค้าทุกประเภทของผู้ขาย
             this.username=window.localStorage.username
-           
-            
             axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/getall', {username:this.username})
             .then((response) => {
-                //console.log(response.data)
                 this.AllGoodsOfUser=response.data
                 this.GoodsShow=this.AllGoodsOfUser
-                //console.log(response.data)
-
             })
             .catch((error) => {
                 console.log(error)
-            })    
-                
-        }
-         
+            })                   
+        }        
     }
 </script>
-
 
 <style scoped>
   .card {
