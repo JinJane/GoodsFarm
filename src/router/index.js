@@ -6,11 +6,10 @@ import Profile from '@/components/Profile'
 import Order from '@/components/Order'
 import GoodsDetail from '@/components/GoodsDetail'
 import AddGoods from '@/components/AddGoods'
+import Graph from '@/components/Graph'
 import Card from '@/components/elements/Card'
 import CardList from '@/components/elements/CardList'
-import BarBeforeLogin from '@/components/elements/BarBeforeLogin'
-
-
+import EditDataGoods from '@/components/EditDataGoods'
 Vue.use(Router)
 
 export default new Router({
@@ -59,10 +58,10 @@ export default new Router({
       props: true
     },
     {
-      path: '/barbefore',
-      name: 'BarBeforeLogin',
-      component: BarBeforeLogin,
-      props: true
+      path: '/graph',
+      name: 'Graph',
+      component: Graph
     },
   ]
 })
+EditDataGoods

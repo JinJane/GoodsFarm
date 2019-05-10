@@ -27,24 +27,24 @@ export default {
     data(){
         return{
              slides: [{
-      title: 'Seungri\'s Alleged',
-      src: 'http://cdn.koreaboo.com/wp-content/uploads/2016/12/gugudan-sejeong-1-360x270.jpg',
+      title: 'Meat',
+      src: 'http://www.phtnet.org/article/images/a31_1.jpg',
       desc: 'dummy description text here...'
     }, {
-      title: 'Emma',
-      src: 'http://img23.fansshare.com/media/content2/360x270_Charlbi-Dean-Kriek-star-continues-to-rise-in-US-as-model-and-actress-653940467.jpg',
+      title: 'Milk',
+      src: 'http://www.thailandbestbeauty.com/wp-content/uploads/2016/06/%E0%B8%99%E0%B8%A1%E0%B8%AA%E0%B8%94.jpg',
       desc: 'dummy description text here...'
     }, {
-      title: 'Kim Tae Hee',
-      src: 'https://lh4.googleusercontent.com/jviHIWcTfGcI1eZbu9qPYDjEwkLXoDkqT_b_VDSXw6GXh1Ij_sUi6YuxG0TWd1QB9jkEt1MPU4qHcUiDUWHIdJK4v2qW7NcwQ6xLUj0_3KWwYASxX9UdVSA_R1fR7sljkg',
+      title: 'Egg',
+      src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpZ1juuRE9oPsTf6PvTCc-Kkp49UlhCD4jer9wVr_zqeaovxKW',
       desc: 'dummy description text here...'
     }, {
-      title: 'Kate',
-      src: 'http://img23.fansshare.com/media/content3/360x270_girl-of-the-day--romanian-model-beatrice-adochitei-5074.jpg',
+      title: 'Vegetable',
+      src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8yqMiSoB-TzB4j8W_6XkPe3qjbwFWAiSjJTfiSTdbjdhWNt5Qdg',
       desc: 'dummy description text here...'
     }, {
-      title: 'Sherry',
-      src: 'http://cdn.koreaboo.com/wp-content/uploads/2017/02/bbanana4-360x270.png',
+      title: 'Fruit',
+      src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUUOONOO_A-4p_fWozqCVOPd1ktGoxi4x_6rg_AFPrsO9f5gKrVA',
       desc: 'dummy description text here...'
     }]
         }
