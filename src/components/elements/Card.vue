@@ -1,47 +1,52 @@
 <template>
 <div>
-  <div class="card">
-      {{data.img}}
+  <div class="card"  style="margin: 5px 2px 5px 2px">
+      <!-- {{data.img}} -->
     <div class="card-image  ">
       <figure class="image is-480x480">
         <!-- <img src="https://goodsfarm-backend-garking.c9users.io/getpicture/"+{{data.img}} alt="Placeholder image"> -->
         <img v-bind:src="'https://goodsfarm-backend-garking.c9users.io/getpicture/' +data.img" alt="Placeholder image" style="height: 200px;">
       </figure>
     </div>
-    <div class="card-content" style="padding: 10px;">
+    <div class="card-content is-clearfix" >
       <div class="media">
         <div class="media-content">
           <p class="title is-4">{{data.name}} </p>
         </div>
       </div>
       <div class="content is-clearfix">
-        <div style="height: 100px;">
+        <div v-if="statusUser==false"  style="height: 50px;">
          
             <!-- <p>{{data.name}} </p>
             <p>{{data.name}} </p> -->
             
-            <div class="columns" style="padding: 3px;">
-              <div class="column is-two-fifth is-pulled-right">ผู้ขาย</div>
-              <div class="column is-pulled-right">: {{data.username}}</div>
+            <!-- <div class="columns" style="padding: 3px;">
+              <div class="column is-two-fifth is-pulled-right"><span> ผู้ขาย</span></div>
+              <div class="column is-pulled-right"><span> {{data.username}}</span></div>
              </div>  
           
             <div class="columns" style="padding: 3px;">
-              <div class="column is-two-fifth is-pulled-right">ผู้ขาย</div>
-              <div class="column is-pulled-right">: {{data.username}}</div>
+              <div class="column is-two-fifth is-pulled-right"><span>ผู้ขาย</span></div>
+              <div class="column is-pulled-right"><span> {{data.username}}</span></div>
              </div>  
-            {{data.type}}
+            {{data.type}} -->
+            ผู้ขาย   : {{data.username}} <br>
+            ประเภท  : {{data.type}}
+            
             
            
         </div>
-        
+        <div v-if="statusUser==true"  style="height: 50px;">
+            จำนวนคงเหลือ : {{data.quantity}}
+        </div>
         <p class="is-pulled-right">
           <span class="title is-4"><strong>&dollar;  {{data.u_price}} </strong></span>
         </p>
       </div>
-      <div  class="card-footer btn-actions" v-if="m==true">
+      <div  class="card-footer btn-actions" v-if="statusUser==true" style="height: 20px;">
 
         
-          <a href="#" class="card-footer-item" @click="GoToEdit()"> <span><strong>Edit</strong></span></a>
+          
           <a class="card-footer-item" @click="modalShow='is-active'"><span><strong>Delete</strong></span></a>
           
         
@@ -50,7 +55,7 @@
         
       </div>
     </div>
-    <router-link v-if="m!=true"
+    <router-link v-if="statusUser!=true"
       class="details"
       :to="{
         
@@ -93,19 +98,16 @@ export default {
     props: ['data','state'],
     data(){
       return{
-        m:false,
+        statusUser:false,
         modalShow:''
       }
     },
     beforeMount(){
-      if(this.state =='sell') this.m=true
-      else this.m = false
+      if(this.state =='sell') this.statusUser=true
+      else this.statusUser = false
     },
     methods:{
-      GoToEdit(){
-        
-        this.$router.push( {name: 'EditDataGoods',params:{dataEdit : this.data} });
-      },
+      
       deleteItem(){
         axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/delete', 
             {id_item:this.data._id})

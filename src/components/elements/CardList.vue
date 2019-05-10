@@ -6,6 +6,23 @@
         <!-- {{Goods}} -->
         <!-- {{state}} -->
         <div>
+            
+            
+
+            <!-- <p  class="mt-3">Current Page: {{ currentPage }}</p> -->
+            
+
+            <!-- <h1>{{visibleProduct}}</h1> -->
+            <div id=" my-card" style="margin-top: 80px;">
+                
+                <div class="columns is-centered is-multiline" >
+                    <div v-for="data in visibleProduct" :key="data.id" class="  column is-one-quarter " style="padding: 0px; " >
+                        <!-- <h1>{{visibleProduct.id}}</h1> -->
+                        <!-- <h1>1</h1> -->
+                        <Card :data="data" :state="state"></Card>
+                    </div>  
+                </div>
+            </div>
             <div class="columns is-mobile">
                 <div class="column is-half  is-offset-one-quarter " style="margin-top: 30px;">
                     <b-pagination
@@ -22,23 +39,6 @@
                 </div>
                 
             </div>
-            
-
-            <!-- <p  class="mt-3">Current Page: {{ currentPage }}</p> -->
-            
-
-            <!-- <h1>{{visibleProduct}}</h1> -->
-            <div id=" my-card" >
-                
-                <div class="columns is-centered is-multiline" >
-                    <div v-for="data in visibleProduct" :key="data.id" class="  column is-one-quarter " >
-                        <!-- <h1>{{visibleProduct.id}}</h1> -->
-                        <!-- <h1>1</h1> -->
-                        <Card :data="data" :state="state"></Card>
-                    </div>  
-                </div>
-            </div>
-            
           
         </div>
         

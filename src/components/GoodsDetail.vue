@@ -2,10 +2,11 @@
     <div>      
         <div class="section ">
             <div class = "card">
-                <!-- {{data.quantity}} -->
+                <!-- {{data.img}}
+                https://goodsfarm-backend-garking.c9users.io/getpicture/{{data.img}} -->
                 <div class="columns">
                     <figure class="card-image is-480x480  column is-one-thirds" style="margin: 20px; "> 
-                        <img src="https://bulma.io/images/placeholders/480x480.png">
+                        <img  v-bind:src="'https://goodsfarm-backend-garking.c9users.io/getpicture/'+data.img" style="height: 300px; width: 480px">
                     </figure>                  
                     <div class="card-content column is-two-thirds">
                        <div class="card-content__title is-pulled-left " style="margin-top: 20px;height: 50px;">
@@ -18,7 +19,7 @@
 
                         <div class="card-content__text is-pulled-left " style="margin-top: 20px;  height: 200px;"> 
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                           <strong>Product details : </strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, quis nostrud
             </p>
           </div>
@@ -37,25 +38,25 @@
                     </div>
                     
                 </div>
-                <div class="card-footer"  >
+                <div class="card-footer" style="padding: 0px 3px 0px 3px;" >
                     <!-- <h1>mook</h1> -->
-                    <div class="container is-pulled-right" >
+                    <div class="container is-pulled-right" style="margin: 0px 0px 0px 250px">
 
                     
                     <div class="row is-pulled-right" style=" float: right;">  
                         
                     
-                    <div class="card-content"  >
-                            <div class="select is-rounded  is-pulled-right">
+                    <div class="card-content"  style="padding: 10px 2px 10px 2px">
+                            <div class="select is-rounded is-medium is-pulled-right"  >
                                 <select @change="onSelectQuantity(data._id)" v-model="selected">
                                     <option v-for="quantity in quantityArray" :value="quantity" :key="quantity">{{ quantity }}</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="card-content is-pulled-right" >
-                            <button class="button is-primary  is-rounded" @click="Buy()" style="margin-right: 6px; float: down" >
+                        <div class="card-content is-pulled-right" style="padding:  10px 2px 10px 2px">
+                            <button class="button is-primary is-medium is-rounded" @click="Buy()" style="margin-right: 6px; float: down" >
                                 
-                                <span class="icon has-text-link">
+                                <span class="icon has-text-link" >
                                         <i class="fas fa-plus"></i>
                                         </span>
                                 <span class=" is-3"><strong>Buy Now!</strong></span>                                      
@@ -71,15 +72,17 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <p class="modal-card-title">Modal title</p>
+                    <p class="modal-card-title">Confirm Order</p>
                     <button @click="modalShow =''" class="delete" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
                     <div class="container">
-                        <h1>Name : {{data.name}}</h1>
-                        <h1>Quantity : {{selected}}</h1>
-                        <h1>Sum : {{data.u_price * selected}}</h1>
-                        <h1></h1>
+                        <!-- Product Name : {{data.name}} <br>
+                        Quantity     : {{selected}}  <br>
+                        total        : {{data.u_price * selected}} -->
+                        <span>Product Name : {{data.name}} </span> <br>
+                        <span>Quantity     : {{selected}}</span><br>
+                        <span>total        : {{data.u_price * selected}}</span>                        
                     </div>
                 </section>
                 <footer class="modal-card-foot ">
@@ -112,7 +115,7 @@ export default {
         // // this.data=obj[this.$route.params.id-1]
         // this.data=obj[this.$route.params.id-1]
         
-        console.log()
+        
         axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/get', 
             {id_item:this.$route.params.id})
             .then((response) => {
@@ -140,7 +143,7 @@ export default {
             console.log("buyer:"+this.data.username)
 
             axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/buy', 
-            {quantity:this.selected,id_item:this.data._id,buyer:this.data.username})
+            {quantity:this.selected,id_item:this.data._id,buyer:window.localStorage.username})
             .then((response) => {
                 console.log(response)
                 
