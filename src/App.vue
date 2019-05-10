@@ -7,8 +7,10 @@
     <div v-show="logined">
       <BarAfterLogin/>
     </div>
-
-    <router-view/>
+  <div style="margin-top:100px">
+ <router-view/>
+  </div>
+   
   </div>
 </template>
 
