@@ -9,17 +9,19 @@
         </router-link>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div id="navbarBasicExample" class="navbar-menu" style="padding: 0px">
         <div class="navbar-start">
           <router-link to="/sell">
-            <a class="navbar-item is-fluid">
-              <span class="icon is-large has-text-danger" size="2rem x 2rem	">
-                <i class="fas fa-box-open fa-2x" aria-hidden="true"></i>
+          <div class="navbar-item">
+            <a class="button is-success">
+              <span class="icon  has-text-danger" >
+                <i class="fas fa-box-open" ></i>
               </span>
               <span>
                 <strong>SELL</strong>
               </span>
             </a>
+          </div>
           </router-link>
 
           <!-- <a class="navbar-item">
@@ -49,12 +51,12 @@
           </div>-->
         </div>
         <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
+          <div class="navbar-item" style="padding: 0px 16px 0px 16px">
+            <div class="buttons" style="margin-bottom: 0px" >
                 <router-link to="/graph">
-                <a class="navbar-item is-fluid">
-                <span class="icon is-large has-text-warning" size="2rem x 2rem	">
-                  <i class="fas fa-chart-line fa-2x" aria-hidden="true"></i>
+                <a class="button is-danger" style="margin-bottom: 0px; margin-right:2px">
+                <span class="icon has-text-warning">
+                  <i class="fas fa-chart-line" ></i>
                 </span>
                 <span>
                   <strong>Graph</strong>
@@ -63,19 +65,17 @@
                 </router-link>
               
             </div>
-          </div>
-
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <a class="navbar-item is-fluid"  @click="logout">
-                <span class="icon is-large has-text-danger" size="2rem x 2rem	">
-                  <i class="fas fa-sign-out-alt fa-2x" aria-hidden="true"></i>
+          
+            
+              <a class="button is-link" style="padding: 0px 16px 0px 16px" @click="logout">
+                <span class="icon has-text-danger"	>
+                  <i class="fas fa-sign-out-alt " ></i>
                 </span>
                 <span>
                   <strong>SignOut</strong>
                 </span>
               </a>
-            </div>
+            
           </div>
         </div>
       </div>

@@ -48,7 +48,7 @@
         <div class="navbar-end">
           <div class="navbar-item" style="padding: 0px 16px 0px 16px">
             <div class="buttons">
-              <a class="button " v-on:click="modalShow='is-active'">
+              <a class="button is-warning " v-on:click="modalShow='is-active'">
                 <span class="icon has-text-link">
                   <i class="fas fa-user-plus"></i>
                 </span>
@@ -108,7 +108,7 @@
                 <button class="modal-close is-large" aria-label="close" v-on:click="modalShow=' '">x</button>
               </div>
 
-              <a class="button " v-on:click="modalGo='is-active'">
+              <a class="button is-link" v-on:click="modalGo='is-active'">
                 <span class="icon" style="color:#97cd76;">
                   <i class="fas fa-sign-in-alt"></i>
                 </span>
