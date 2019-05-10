@@ -52,7 +52,7 @@ export default {
   /* text-align: center; */
   color: #2c3e50;
   /* margin-top: 60px; */
-  /* background: url('https://www.color-blindness.com/color-name-hue-tool/js/images/map-green-max.png') no-repeat center center fixed; 
+   background: url('https://us.123rf.com/450wm/juliarstudio/juliarstudio1601/juliarstudio160102156/51729892-stock-vector-farm-flat-landscape-organic-food-concept-for-any-design.jpg?ver=6') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -60,6 +60,6 @@ export default {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; */
+  background-size: cover; 
 }
 </style>

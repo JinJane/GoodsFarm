@@ -282,7 +282,7 @@ export default {
     };
   },
   mounted() {
-    this.data.username = "abc";
+    this.data.username = window.localStorage.username;
   },
 
   methods: {
