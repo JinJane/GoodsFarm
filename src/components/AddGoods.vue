@@ -163,12 +163,12 @@ export default {
     return {
       selected: 0,
       data: {
-        username: " ",
-        type: " ",
-        name: " ",
-        u_price: " ",
-        quantity: " ",
-        img:" "
+        username: "",
+        type: "",
+        name: "",
+        u_price: "",
+        quantity: "",
+        img:""
       },
       file: "",
       filename: "Choose file"
@@ -202,7 +202,7 @@ export default {
         )
         .then(response => {
           console.log(response);
-          //  this.$router.push('/')
+      
           this.submitFile();
         })
         .catch(function(error) {
@@ -212,9 +212,11 @@ export default {
     submitFile() {
       let formData = new FormData();
       formData.append("avatar", this.file);
+      var url = "https://goodsfarm-backend-garking.c9users.io/profile/"+this.data.username+'/'+this.data.name
+      console.log(url)
       axios
         .post(
-          "https://goodsfarm-backend-garking.c9users.io/profile/garking",
+          url,
           formData,
           {
             headers: {
@@ -222,12 +224,14 @@ export default {
             }
           }
         )
-        .then(function(res) {
+        .then((res) => {
           console.log("SUCCESS!!");
+          this.$router.push('/')
           console.log(res);
         })
-        .catch(function() {
+        .catch(function(err) {
           console.log("FAILURE!!");
+          console.log(err)
         });
     }
   }
