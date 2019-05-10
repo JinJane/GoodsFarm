@@ -1,8 +1,7 @@
 <template>
+<!-- เป็นหน้าที่ให้ผู้ขายใช้เพิ่มสินค้า -->
   <div id="add" class="container-fluid">
     <div class="card" style="margin-top: 40px">
-      <!-- <h1>mmm</h1> -->
-
       <div class="card-body">
         <div class="row">
           <div class="col-md-6">
@@ -13,18 +12,13 @@
               <div class="card-body" style="height: 384px;">
                 <form class="form-horizontal" action>
                   <div class="form-group row">
-                    <!-- <label class="col-md-3 col-form-label" for="text-input">*ชื่อสินค้า</label> -->
                     <div class="col-md-3 col-form-label">
                       <span class=" is-3"><strong>Name</strong></span> 
                       <span class="icon has-text-danger ">
                           <i class="fas fa-asterisk"></i>
-                      </span>
-                      
+                      </span>                     
                     </div>
-                    
                     <div class="col-md-9">
-                      <!-- <input class="form-control" id="text-input" type="text" name="text-input" placeholder="Textmook"> -->
-                      <!-- <span class="help-block">This is a help text</span> -->
                       <div class="control has-icons-left has-icons-right">
                         <input
                           v-if="checkData.name== true"
@@ -48,12 +42,9 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-md-3 col-form-label">
-                      <span class=" is-3"><strong>Details</strong></span> 
-                      
-                      
+                      <span class=" is-3"><strong>Details</strong></span>   
                     </div>
                     <div class="col-md-9">
-                      <!-- <textarea class="form-control" id="textarea-input" name="textarea-input"  placeholder="Content.."></textarea> -->
                       <textarea class="textarea is-rounded" placeholder="Detail your goods" rows="8" type="text" v-model="data.descrip"></textarea>
                     </div>
                   </div>
@@ -62,8 +53,7 @@
                       <span class=" is-3"><strong>Category</strong></span> 
                       <span class="icon has-text-danger ">
                           <i class="fas fa-asterisk"></i>
-                      </span>
-                      
+                      </span>                      
                     </div>
                     <div class="col-md-9">
                       <div class="field">
@@ -101,8 +91,7 @@
                     </div>
                   </div>
                 </form>
-              </div>
-              
+              </div>             
             </div>
           </div>
           <div class="col-md-6">
@@ -120,7 +109,6 @@
                       
                     </div>
                   <div class="col-md-9">
-                    <!-- <input class="form-control" id="text-input" type="text" name="text-input" placeholder="฿"> -->
                     <div class="control has-icons-left has-icons-right">
                       <input
                         v-if="checkData.u_price== true"
@@ -144,8 +132,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group row">
-                  
+                <div class="form-group row">                 
                   <div class="col-md-3 col-form-label">
                       <span class=" is-3"><strong>Quantity</strong></span> 
                       <span class="icon has-text-danger ">
@@ -184,19 +171,16 @@
                 <strong>Media Management</strong>
               </div>
               <div class="card-body">
-                <div class="form-group row">
-                  
+                <div class="form-group row">      
                   <div class="col-md-3 col-form-label">
                       <span class=" is-3"><strong>Product Image</strong></span> 
                       <span class="icon has-text-danger ">
                           <i class="fas fa-asterisk"></i>
-                      </span>
-                      
+                      </span>                     
                     </div>
                   <div class="col-md-9">
                     <div class="field">
-                      <div v-if="checkData.img== true"  class="file is-primary has-name is-boxed">
-                      
+                      <div v-if="checkData.img== true"  class="file is-primary has-name is-boxed">                     
                         <label class="file-label">
                           <input
                             class="file-input"
@@ -234,8 +218,7 @@
                           </span>
                           <span class="file-name">{{filename}}</span>
                         </label>
-                      </div>
-                      
+                      </div>  
                     </div>
                   </div>
                 </div>
@@ -265,7 +248,7 @@ export default {
   data() {
     return {
       selected: "Have't Type",
-      checkData:{
+      checkData:{ 
         
         type:true,
         name: true,
@@ -286,61 +269,52 @@ export default {
       filename: "Choose file"
     };
   },
-  mounted() {
+  mounted() { 
     this.data.username = window.localStorage.username;
   },
 
   methods: {
-    checkDataInfo(){
+    checkDataInfo(){ //เป็น function ที่ตรวจสอบว่าข้อมูลที่บังคับกรอก ถูกใส่ครบไหม
       this.data.type = this.selected
-      console.log(this.data)
-      console.log(this.data.img)
       this.data.img=this.filename
       if(this.data.name!='' && this.data.type !=''&& this.data.u_price!='' && this.data.quantity!='' && this.data.img!='Choose file'){
-                //this.send_info()
-                // this.$router.push( '/mainpage' );
-               
-                // window.location.reload()
-                if(this.data.u_price > 0 && this.data.quantity >0) {
-                  console.log('OK')
-                  this.send_info()
-                }
-                else{
-                  if(this.data.u_price<0) this.checkData.u_price=false
-                  if(this.data.u_price>0) this.checkData.u_price=true
+        if(this.data.u_price > 0 && this.data.quantity >0) {
+            this.send_info() //ถ้าข้อมูลถูกต้องทั้งหมด จะสามารถเพิ่มสินค้าได้
+        }
+        else{
+          if(this.data.u_price<0) this.checkData.u_price=false
+          if(this.data.u_price>0) this.checkData.u_price=true
 
-                  if(this.data.quantity<0) this.checkData.quantity=false
-                  if(this.data.quantity>0) this.checkData.quantity=true
-                }
+          if(this.data.quantity<0) this.checkData.quantity=false
+          if(this.data.quantity>0) this.checkData.quantity=true
+        }
                 
-            }               
-            else{
-                if(this.data.name=='') this.checkData.name=false
-                if(this.data.name!='') this.checkData.name=true
+      }               
+      else{
+        if(this.data.name=='') this.checkData.name=false
+        if(this.data.name!='') this.checkData.name=true
 
-                if(this.data.type=="Have't Type") this.checkData.type=false
-                if(this.data.type!="Have't Type") this.checkData.type=true
+        if(this.data.type=="Have't Type") this.checkData.type=false
+        if(this.data.type!="Have't Type") this.checkData.type=true
 
-                if(this.data.u_price=='') this.checkData.u_price=false
-                if(this.data.u_price!='') this.checkData.u_price=true
+        if(this.data.u_price=='') this.checkData.u_price=false
+        if(this.data.u_price!='') this.checkData.u_price=true
 
-                if(this.data.quantity=='') this.checkData.quantity=false
-                if(this.data.quantity!='') this.checkData.quantity=true
+        if(this.data.quantity=='') this.checkData.quantity=false
+        if(this.data.quantity!='') this.checkData.quantity=true
 
-                if(this.data.img=='Choose file') this.checkData.img=false
-                if(this.data.img!='Choose file') this.checkData.img=true
+        if(this.data.img=='Choose file') this.checkData.img=false
+        if(this.data.img!='Choose file') this.checkData.img=true
 
-                if(this.data.u_price<0) this.checkData.u_price=false
-                  if(this.data.u_price>0) this.checkData.u_price=true
+        if(this.data.u_price<0) this.checkData.u_price=false
+        if(this.data.u_price>0) this.checkData.u_price=true
 
-                  if(this.data.quantity<0) this.checkData.quantity=false
-                  if(this.data.quantity>0) this.checkData.quantity=true
-            }         
-      // if()
+        if(this.data.quantity<0) this.checkData.quantity=false
+        if(this.data.quantity>0) this.checkData.quantity=true
+      }         
     },
     updateList() {
       var input = document.getElementById("file");
-      console.log(input.files.item(0).name);
       this.filename = input.files.item(0).name;
       this.file = this.$refs.file.files[0];
     },
@@ -353,9 +327,7 @@ export default {
     onSelect() {
       console.log(this.data.type);
     },
-    send_info() {
-     // this.data.type = this.selected
-      //console.log(this.data.img)
+    send_info() { //เป็น function ที่ส่งข้อมูลสินค้าที่ถูกเพิ่มไปเก็บไว้ที่ฐานข้อมูล
       axios
         .post(
           "https://goodsfarm-backend-garking.c9users.io/api/item/sell",
@@ -370,7 +342,7 @@ export default {
           console.log(error);
         });
     },
-    submitFile() {
+    submitFile() { // เป็น function ที่ใช้ upload ไฟล์รูปภาพของสินค้าไปที่ฐานข้อมูล
       let formData = new FormData();
       formData.append("avatar", this.file);
       var url = "https://goodsfarm-backend-garking.c9users.io/profile/"+this.data.username+'/'+this.data.name

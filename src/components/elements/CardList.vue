@@ -1,52 +1,32 @@
 <template>
-   
-    
+<!-- เป็น elements ที่ทำหน้าที่เอาข้อมูลสินค้าทั้งหมดส่งไป Card เพื่อทำการแสดงผลสินค้าทีละสินค้า -->
     <div>
-        <!-- {{datas.length}} -->
-        <!-- {{Goods}} -->
-        <!-- {{state}} -->
         <div>
-            
-            
-
-            <!-- <p  class="mt-3">Current Page: {{ currentPage }}</p> -->
-            
-
-            <!-- <h1>{{visibleProduct}}</h1> -->
-            <div id=" my-card" style="margin-top: 80px;">
-                
+            <div id=" my-card" style="margin-top: 80px;">               
                 <div class="columns is-centered is-multiline" >
+                    <!-- ใช้ loop ส่งสินค้าไป Card เพื่อแสดงผลสินค้า -->
                     <div v-for="data in visibleProduct" :key="data.id" class="  column is-one-quarter " style="padding: 0px; " >
-                        <!-- <h1>{{visibleProduct.id}}</h1> -->
-                        <!-- <h1>1</h1> -->
                         <Card :data="data" :state="state"></Card>
                     </div>  
                 </div>
             </div>
             <div class="columns is-mobile">
+
                 <div class="column is-half  is-offset-one-quarter " style="margin-top: 30px;">
                     <b-pagination
                         v-model="currentPage"
                         :total-rows="Goods.length"
-                        :per-page="12"
+                        :per-page="perPage"
                         aria-controls="my-card" 
                         v-if="Goods.length != 0"
                     > {{updateProducts}}</b-pagination>
                     <h1 class="column is-half  is-offset-one-quarter " v-if="Goods.length ==0" style="margin-top: 150px"> 
                         Have not Goods!!
-                       </h1>
-                        
-                </div>
-                
-            </div>
-          
-        </div>
-        
-        
+                       </h1>                        
+                </div>               
+            </div>          
+        </div>   
     </div> 
-   
-   
-
 </template>
 <script>
 import Card from './Card.vue'
@@ -56,42 +36,19 @@ import Card from './Card.vue'
       props: ['Goods','state'], 
       data(){
           return{
-              mm:0,
-              datas:[],
-              currentPage:1,
-                perPage:12,
+ 
+              currentPage:1,            //เก็บว่าปัจจุบันเป็นหน้าที่เท่าไหร่
+              perPage:12,               //ในหนึ่งหน้าจะมีข้อมูลสินค้า 12 ชิ้น
               visibleProduct : []
           }
       },
       computed:{
-          updateProducts(){
-                
-                
-                this.visibleProduct = this.Goods.slice((this.currentPage-1) * 12,((this.currentPage )*12))
+          //เป็น function ที่ใช้แบ่งหน้า เก็บไว้ที่ตัวแปร visibleProduct ซึ่งเป็น array ของสินค้าที่จะแสดงผลในหน้านั้น
+          updateProducts(){               
+                this.visibleProduct = this.Goods.slice((this.currentPage-1) * this.perPage,((this.currentPage )*this.perPage))
             }
       },
-      
         
-        beforeMount(){
-            
-            this.datas=this.Goods
-            
-            console.log("Goods = "+this.Goods)
-
-//       let mm = JSON.stringify(tt)
-     
-//     //   localStorage.AllGoods = tt
-//     //    console.log(localStorage.AllGoods.length)
-//       localStorage.setItem('AllGoods',mm)
-//       let objects = JSON.parse(localStorage.getItem("AllGoods"))
-//       this.datas=objects
-// console.log(objects.length)
-//       this.updateProducts
-// this.datas=localStorage.AllGoods
-        },
-        
-        
-         
     }
 </script>
 <style >

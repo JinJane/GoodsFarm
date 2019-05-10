@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div id="example" >
       <carousel-3d style="padding: 40px 0px 20px 0px" >
         <slide v-for="(slide, i) in slides" :index="i" :key="i" >
