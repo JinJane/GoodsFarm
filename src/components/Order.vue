@@ -1,26 +1,22 @@
 <template>
-  <div class="container" >
-    <div  class="columns is-mobile" v-for=" (n,index) in orders" v-bind:key="n.id">
-      <div class="column is-12" >
+  <div class="container">
+    <br>
+    <br>
+    <div class="columns is-mobile" v-for=" (n,index) in orders" v-bind:key="n.id">
+      <div class="column is-12">
         <b-card>
-          <!-- <b-row class="text-center">
-            <b-col>
-
-            </b-col>
-            <b-col cols="8 text-left">{{n.name}}</b-col>
-            <b-col>
-              <h5>{{n.u_price}} $</h5>
-            </b-col>
-          </b-row>-->
-
           <b-row>
-            <b-col  >
-              <a class="button is-light text-right" v-show="!n.send"  v-on:click="GoToTran(n._id,n.send,index)">
+            <b-col>
+              <a
+                class="button is-light text-right"
+                v-show="!n.send"
+                v-on:click="GoToTran(n._id,n.send,index)"
+              >
                 <span class="icon has-text-link">
                   <i class="fas fa-shuttle-van"></i>
                 </span>
                 <span>
-                  <strong  >Transport</strong>
+                  <strong>Transport</strong>
                 </span>
               </a>
             </b-col>
@@ -36,7 +32,6 @@
             </b-col>
             <b-col>
               <a class="button is-medium" v-on:click="showlocationn(n.buyer)">
-                <!-- modalGo='is-active' -->
                 <span class="icon has-text-danger" style="color:#97cd76;">
                   <i class="fas fa-map-marker-alt"></i>
                 </span>
@@ -48,15 +43,10 @@
       </div>
     </div>
     <div class="text-right set-bot">
-      <!-- <router-link to="/sell">
-                <b-button class="button-set" variant="primary">Go to Sell</b-button>
-              </router-link> -->
-<router-link to="/">
-                <b-button class="button-set" variant="warning">Go to Home</b-button>
-              </router-link>
+      <router-link to="/">
+        <b-button class="button-set" variant="warning">Go to Home</b-button>
+      </router-link>
     </div>
-    
-
     <div id="login" v-bind:class="'modal '+modalGo">
       <div class="modal-background"></div>
       <div class="modal-content">
@@ -64,7 +54,6 @@
           <section class="modal-card-body">
             <h4>To. : {{buyer}}</h4>
             <h6>{{location}}</h6>
-
             <div class="text-right">
               <b-button class="button is-info" v-on:click="modalGo=' '">OK</b-button>
             </div>
@@ -72,8 +61,6 @@
         </div>
       </div>
     </div>
-    <!--               
-    -->
   </div>
 </template>
 <script>
@@ -84,7 +71,6 @@ export default {
     let username = {
       username: window.localStorage.username
     };
-    console.log(username);
     axios
       .post(
         "https://goodsfarm-backend-garking.c9users.io/api/order/getall",
@@ -92,26 +78,15 @@ export default {
       )
       .then(response => {
         this.orders = response.data;
-        var i =0
+        var i = 0;
         response.data.forEach(e => {
-          
-          this.cc[i] =  e.send
-          i++
-          
+          this.cc[i] = e.send;
+          i++;
         });
-
-        console.log(this.orders);
       })
       .catch(error => {
         console.log(error);
       });
-    // this.Notsent = this.orders.filter(order => {
-    //         if(order.send==false){
-    //           return order.send
-    //           console.log(order.send)
-
-    //         }
-    //       });
   },
   data() {
     return {
@@ -121,17 +96,16 @@ export default {
       location: "",
       buyer: "",
       check: true,
-      cc:[]
+      cc: []
     };
   },
   methods: {
-    GoToTran(id, send,num) {
+    //ยืนยันการส่งสินค้า
+    GoToTran(id, send, num) {
       let idorder = {
         _id: id
       };
-     this.orders[num].send= !this.orders[num].send
-      console.log(this.orders[num].send)
-      // console.log(send);
+      this.orders[num].send = !this.orders[num].send;
       axios
         .post(
           "https://goodsfarm-backend-garking.c9users.io/api/order/send",
@@ -139,32 +113,31 @@ export default {
         )
         .then(response => {
           send = true;
-          // console.log(send);
         })
         .catch(error => {
           console.log(error);
         });
     },
+    //แสดงโลเคชั่น
     showlocationn(buy) {
-    this.modalGo = "is-active";
-    this.buyer = buy;
-    let user = {
-      username: buy
-    };
-    axios
-      .post(
-        "https://goodsfarm-backend-garking.c9users.io/api/profile/getinfo",
-        user
-      )
-      .then(response => {
-        this.location = response.data.address;
-      })
-      .catch(error => {
-        console.log(error);
-      });
+      this.modalGo = "is-active";
+      this.buyer = buy;
+      let user = {
+        username: buy
+      };
+      axios
+        .post(
+          "https://goodsfarm-backend-garking.c9users.io/api/profile/getinfo",
+          user
+        )
+        .then(response => {
+          this.location = response.data.address;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
-  },
-  
 };
 </script>
 <style>
@@ -178,7 +151,7 @@ h5 {
   color: brown;
 }
 .set-bot {
-  margin-bottom: 100px
+  margin-bottom: 100px;
 }
 </style>
 

@@ -5,21 +5,17 @@
         <div class="col-lg-3 order-lg-2">
           <div class="card-profile-image">
             <figure class="image is-1by1">
-              <img
-                class="is-rounded"
-                src="../../src/assets/home.png"
-              >
+              <img class="is-rounded" src="../../src/assets/home.png">
             </figure>
           </div>
         </div>
       </div>
       <div class="text-center mt-5">
-        <h1 class="title is-1">{{this.username}}</h1>
+        <h1 class="title is-1 " style="color:white">{{this.username}}</h1>
       </div>
       <br>
       <b-card class="card-info" shadow no-body bg-variant="light" style="margin-bottom: 0px">
         <div class="mt-5 text-center">
-          <!-- <b-card bg-variant="light"> -->
           <b-form-group
             label-cols-lg="3"
             label="My Profile"
@@ -92,9 +88,7 @@
             <div class="text-right">
               <div class="modal">
                 <div class="modal-background"></div>
-                <div class="modal-content">
-                  <!-- Any other Bulma elements you want -->
-                </div>
+                <div class="modal-content"></div>
                 <button class="modal-close is-large" aria-label="close"></button>
               </div>
               <b-button
@@ -109,8 +103,6 @@
               <b-button class="button-set" variant="primary" @click="setprofile">Submit</b-button>
             </div>
           </b-form-group>
-          <!-- </b-card> -->
-          <!-- Make sure to change password -->
           <div v-bind:class="'modal '+modalShow">
             <div class="modal-background"></div>
             <div class="modal-content">
@@ -125,9 +117,7 @@
                       <b-input v-model="New" type="password" placeholder="New Password"></b-input>
                     </b-form-group>
                     <b-form-group label="Confirm Password">
-                      <b-input v-model="ConfirmPass" type="password" placeholder="Confirm Password">
-                        <!-- minlength="6" -->
-                      </b-input>
+                      <b-input v-model="ConfirmPass" type="password" placeholder="Confirm Password"></b-input>
                     </b-form-group>
                   </div>
                   <div class="text-right">
@@ -148,14 +138,9 @@ import axios from "axios";
 export default {
   name: "Profile",
   beforeMount() {
-    // if (typeof Storage !== "undefined") {
-    //   if (localStorage.check == 1) {
-    // this.$router.push("/contacts");
-    //window.localStorage.username = "jane";
     let username = {
       username: window.localStorage.username
     };
-    console.log(username);
     axios
       .post(
         "https://goodsfarm-backend-garking.c9users.io/api/profile/getinfo",
@@ -171,20 +156,10 @@ export default {
         this.tel = response.data.tel;
         this.address = response.data.address;
         this.forcheck = response.data.username;
-        // console.log(response.data);
       })
       .catch(error => {
         console.log(error);
       });
-    //this.CheckPro = this.profile;
-    //   } else {
-    //     this.$router.push("/");
-    //   }
-    //   //console.log(window.localStorage.logincheck);
-    // } else {
-    //   console.log("Sorry, your browser does not support web storage...");
-    // }
-    //this.searchfilter();
   },
   data() {
     return {
@@ -194,94 +169,84 @@ export default {
       Old: "",
       New: "",
       ConfirmPass: "",
-      forcheck:""
+      forcheck: ""
     };
   },
   methods: {
+    //ทำการแก้ไข profile
     setprofile() {
-      // console.log(NewProfile);
-if(this.forcheck!==this.profile.username){
-let user = {
-        username: this.profile.username
-      };
-      axios
-        .post(
-          "https://goodsfarm-backend-garking.c9users.io/api/profile/checkuser",
-          user
-        )
-        .then(response => {
-          console.log(response.data);
-          if (response.data == "Can use this Username") {
-            window.localStorage.username = this.profile.username;
-            console.log(window.localStorage.username);
-
-            let NewProfile = {
-              key: this.username,
-              username: this.profile.username,
-              name: this.profile.name,
-              surname: this.profile.surname,
-              email: this.profile.email,
-              id_card: this.profile.id_card,
-              tel: this.profile.tel,
-              address: this.profile.address
-            };
-            axios
-              .post(
-                "https://goodsfarm-backend-garking.c9users.io/api/profile/update",
-                NewProfile
-              )
-              .then(response => {
-                window.location.reload();
-                alert("Change profile is success.")
-              })
-              .catch(error => {
-                console.log(error);
-              });
-          } else {
-            alert(
-              "Your username is same other user, please change your username."
-            );
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
-
-
-}else{
-let NewProfile = {
-              key: this.username,
-              username: this.profile.username,
-              name: this.profile.name,
-              surname: this.profile.surname,
-              email: this.profile.email,
-              id_card: this.profile.id_card,
-              tel: this.profile.tel,
-              address: this.profile.address
-            };
-            axios
-              .post(
-                "https://goodsfarm-backend-garking.c9users.io/api/profile/update",
-                NewProfile
-              )
-              .then(response => {
-                window.location.reload();
-                alert("Change profile is success.")
-              })
-              .catch(error => {
-                console.log(error);
-              });
-}
-
-
-
-
-      
+      //ถ้ามีการเปลี่ยนชื่อ username จะส่งไปเช็คว่ามีชื่อซ้ำใน Database หรือไม่
+      if (this.forcheck !== this.profile.username) {
+        let user = {
+          username: this.profile.username
+        };
+        axios
+          .post(
+            "https://goodsfarm-backend-garking.c9users.io/api/profile/checkuser",
+            user
+          )
+          .then(response => {
+            //ถ้าไม่มีคนใช้จะสามารถเปลี่ยนเป็นชื่อ username ได้
+            if (response.data == "Can use this Username") {
+              window.localStorage.username = this.profile.username;
+              let NewProfile = {
+                key: this.username,
+                username: this.profile.username,
+                name: this.profile.name,
+                surname: this.profile.surname,
+                email: this.profile.email,
+                id_card: this.profile.id_card,
+                tel: this.profile.tel,
+                address: this.profile.address
+              };
+              axios
+                .post(
+                  "https://goodsfarm-backend-garking.c9users.io/api/profile/update",
+                  NewProfile
+                )
+                .then(response => {
+                  window.location.reload();
+                  alert("Change profile is success.");
+                })
+                .catch(error => {
+                  console.log(error);
+                });
+            } else {
+              alert(
+                "Your username is same other user, please change your username."
+              );
+            }
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else {
+        let NewProfile = {
+          key: this.username,
+          username: this.profile.username,
+          name: this.profile.name,
+          surname: this.profile.surname,
+          email: this.profile.email,
+          id_card: this.profile.id_card,
+          tel: this.profile.tel,
+          address: this.profile.address
+        };
+        axios
+          .post(
+            "https://goodsfarm-backend-garking.c9users.io/api/profile/update",
+            NewProfile
+          )
+          .then(response => {
+            window.location.reload();
+            alert("Change profile is success.");
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
     },
+    //เช็คเพื่อเปลี่ยน password
     checkpass() {
-      console.log("sssss");
-      console.log(this.New);
-      console.log(this.ConfirmPass);
       if (this.New !== this.ConfirmPass) {
         alert("Old password and Confirm password are not match.");
       } else {
@@ -296,7 +261,6 @@ let NewProfile = {
               password: this.Old,
               new_password: this.New
             };
-            console.log(repass);
 
             axios
               .post(
@@ -351,17 +315,22 @@ h5 {
 }
 </style>
 <style scoped>
-#profile{
-    background: url('https://image.freepik.com/free-photo/high-angle-view-human-hand-planting-fresh-young-plant-into-soil_23-2147948276.jpg') no-repeat center center fixed; 
+#profile {
+  background: url("https://image.freepik.com/free-photo/high-angle-view-human-hand-planting-fresh-young-plant-into-soil_23-2147948276.jpg")
+    no-repeat center center fixed;
   -webkit-background-size: cover;
-  
+
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;background: src('https://image.freepik.com/free-photo/high-angle-view-human-hand-planting-fresh-young-plant-into-soil_23-2147948276.jpg') no-repeat center center fixed; 
+  background-size: cover;
+  background: src(
+      "https://image.freepik.com/free-photo/high-angle-view-human-hand-planting-fresh-young-plant-into-soil_23-2147948276.jpg"
+    )
+    no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  margin: 0%
+  margin: 0%;
 }
 </style>
