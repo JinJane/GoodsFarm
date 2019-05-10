@@ -9,6 +9,7 @@ import Bucket from '@/components/Bucket'
 import AddGoods from '@/components/AddGoods'
 import Card from '@/components/elements/Card'
 import CardList from '@/components/elements/CardList'
+import EditDataGoods from '@/components/EditDataGoods'
 Vue.use(Router)
 
 export default new Router({
@@ -60,5 +61,12 @@ export default new Router({
       props: true,
       component: CardList
     },
+    {
+      path: '/edit',
+      name: 'EditDataGoods',
+      props: true,
+      component: EditDataGoods
+    },
   ]
 })
+EditDataGoods
