@@ -20,6 +20,7 @@ import BarAfterLogin from './elements/BarAfterLogin'
 import Carousel from './elements/Carousel'
 import CardList from './elements/CardList'
 export default {
+    name: "Home",
     components:{BarBeforeLogin,BarAfterLogin,Carousel,CardList},
     data(){
         return{
@@ -27,6 +28,7 @@ export default {
         }
     },
     beforeMount(){
+       
         axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/getuserall', {"id_item":""})
             .then((response) => {
                 //console.log(response.data)

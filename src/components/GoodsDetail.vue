@@ -82,6 +82,7 @@
 <script>
 import axios from 'axios'
 export default {
+    name:"GoodsDetail",
     data(){
         return{
             modalShow:'',

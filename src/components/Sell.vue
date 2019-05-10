@@ -87,6 +87,7 @@
 import axios from 'axios'
 import CardList from './elements/CardList'
     export default {
+        name: "Sell",
       components: {CardList},
       data(){
           return{

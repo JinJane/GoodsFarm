@@ -5,10 +5,12 @@ import Sell from '@/components/Sell'
 import Profile from '@/components/Profile'
 import Order from '@/components/Order'
 import GoodsDetail from '@/components/GoodsDetail'
-import Bucket from '@/components/Bucket'
 import AddGoods from '@/components/AddGoods'
 import Card from '@/components/elements/Card'
 import CardList from '@/components/elements/CardList'
+import BarBeforeLogin from '@/components/elements/BarBeforeLogin'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -16,49 +18,51 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      props: true
     },
     {
       path: '/sell',
       name: 'Sell',
-      component: Sell
+      component: Sell,
     },
     {
       path: '/profile',
       name: 'Profile',
-      component: Profile
+      component: Profile,
     },
     {
       path: '/order',
       name: 'Order',
-      component: Order
+      component: Order,
     },
     {
       path: '/goodsdetail/:id',
       name: 'GoodsDetail',
-      component: GoodsDetail
-    },
-    {
-      path: '/bucket',
-      name: 'Bucket',
-      component: Bucket
+      component: GoodsDetail,
     },
     {
       path: '/addgoods',
       name: 'AddGoods',
-      component: AddGoods
+      component: AddGoods,
     },
     {
       path: '/card',
       name: 'Card',
-      props: true,
-      component: Card
+      component: Card,
+      props: true
     },
     {
       path: '/cardlist',
       name: 'CardList',
-      props: true,
-      component: CardList
+      component: CardList,
+      props: true
+    },
+    {
+      path: '/barbefore',
+      name: 'BarBeforeLogin',
+      component: BarBeforeLogin,
+      props: true
     },
   ]
 })
