@@ -7,6 +7,7 @@ import Order from '@/components/Order'
 import GoodsDetail from '@/components/GoodsDetail'
 import Bucket from '@/components/Bucket'
 import AddGoods from '@/components/AddGoods'
+import Graph from '@/components/Graph'
 import Card from '@/components/elements/Card'
 import CardList from '@/components/elements/CardList'
 import EditDataGoods from '@/components/EditDataGoods'
@@ -62,10 +63,9 @@ export default new Router({
       component: CardList
     },
     {
-      path: '/edit',
-      name: 'EditDataGoods',
-      props: true,
-      component: EditDataGoods
+      path: '/graph',
+      name: 'Graph',
+      component: Graph
     },
   ]
 })

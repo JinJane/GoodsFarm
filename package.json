@@ -17,6 +17,7 @@
     "bulma-carousel": "^4.0.4",
     "popper.js": "^1.12.9",
     "vue": "^2.6.10",
+    "vue-bulma-chartjs": "^1.0.5",
     "vue-carousel-3d": "^0.2.0",
     "vue-router": "^3.0.1"
   },
