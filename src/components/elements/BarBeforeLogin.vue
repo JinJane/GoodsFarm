@@ -13,7 +13,7 @@
                 <div class="navbar-start">
  
                     
-                    <a class="navbar-item is-fluid">
+                    <a class="navbar-item is-fluid" >
                         <span class="icon is-large has-text-danger" size="2rem x 2rem	"><i class="fas fa-box-open fa-2x " aria-hidden="true"></i></span>
                         <span><strong>SELL</strong></span>
                     </a>

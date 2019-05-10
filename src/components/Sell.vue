@@ -62,15 +62,15 @@
                     <li>
                         <a @click="GoToAddGoods()">
                             <span class="icon has-text-danger"><i class="fas fa-plus"></i></span>
-                            <span><strong>Add Goods</strong></span>
+                            <span><strong>ADD GOODS</strong></span>
                         </a>
                     </li>
                 </ul>
             </aside>
             
         <!-- {{getGoodsShow}} -->
-        <div  class="container container is-fluid " >
-            <div class="is-active">
+        <div  class="container container "  style=" padding: 0px; margin: 0px">
+            <div class="is-active" style="margin-right: 40px; margin-left: 0px;">
                 <CardList :Goods="getGoodsShow" :state="'sell'" ></CardList>
             </div>
             
@@ -117,7 +117,7 @@ import CardList from './elements/CardList'
             },
             clickMeat(){
                 // alert("Meat")
-                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"meat"})
+                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"Meat"})
                 .then((response) => {
                     //console.log(response.data.data)
                     
@@ -133,7 +133,7 @@ import CardList from './elements/CardList'
             },
             clickVegetable(){
                 // alert("Vegetable")
-                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"veget"})
+                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"Vegetable"})
                 .then((response) => {
                     //console.log(response.data.data)
                     
@@ -148,7 +148,7 @@ import CardList from './elements/CardList'
             },
             clickEgg(){
                 // alert("Egg")
-                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"egg"})
+                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"Egg"})
                 .then((response) => {
                     //console.log(response.data.data)
                     
@@ -163,7 +163,7 @@ import CardList from './elements/CardList'
             },
             clickFruit(){
                 // alert("Fruit")
-                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"fruit"})
+                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"Fruit"})
                 .then((response) => {
                     //console.log(response.data.data)
                     
@@ -178,7 +178,7 @@ import CardList from './elements/CardList'
             },
             clickMilk(){
                 // alert("Milk")
-                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"milk"})
+                axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/gettype', {username:this.username,type:"Milk"})
                 .then((response) => {
                     //console.log(response.data.data)
                     
@@ -193,7 +193,9 @@ import CardList from './elements/CardList'
             }
         },
         beforeMount(){
-            this.username="garking"
+            this.username=window.localStorage.username
+           
+            
             axios.post('https://goodsfarm-backend-garking.c9users.io/api/item/getall', {username:this.username})
             .then((response) => {
                 //console.log(response.data)
