@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="card" >
+    <div class="card" style="margin-top: 80px">
       <!-- <h1>mmm</h1> -->
 
       <div class="card-body">
