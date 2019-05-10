@@ -73,6 +73,13 @@
           </div>
         </div>
       </div>
+
+<div class="text-right set-bot">
+ <router-link to="/">
+                <b-button class="button-set" variant="warning">Go to Home</b-button>
+              </router-link>
+              </div>
+
     </div>
 
     <div v-bind:class="'modal '+modalShow">
@@ -183,6 +190,9 @@ export default {
 .aaa{
   justify-content:center;
   align-items:center
+}
+.set-bot{
+  margin-top: 100px
 }
 </style>
 
