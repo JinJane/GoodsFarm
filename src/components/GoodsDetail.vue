@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="detail">
     <div class="section">
-      <div class="card" style="margin-top:10px">
+      <div class="card " style="margin-top:10px;background: rgba(255, 255, 255, 0.5);" card-background-color="hsl(0, 0%, 29%)">
         <!-- {{data.img}}
         https://goodsfarm-backend-garking.c9users.io/getpicture/{{data.img}}-->
         <div class="columns">
@@ -196,3 +196,18 @@ export default {
 }
 </style>
 
+<style scoped>
+#detail{
+    background: url('https://img.freepik.com/free-photo/wall-color-cream-texture-background_42547-1046.jpg?size=626&ext=jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;background: src('https://img.freepik.com/free-photo/wall-color-cream-texture-background_42547-1046.jpg?size=626&ext=jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0%
+}
+</style>
