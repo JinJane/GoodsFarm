@@ -1,36 +1,35 @@
 <template>
   <div>
     <div class="section">
-      <div class="card">
+      <div class="card" style="margin-top:20px">
         <!-- {{data.img}}
         https://goodsfarm-backend-garking.c9users.io/getpicture/{{data.img}}-->
         <div class="columns">
-          <figure class="card-image is-480x480 column is-one-thirds" style="margin: 20px; ">
+          <figure class="card-image is-480x480 column is-one-thirds" >
             <img
               v-bind:src="'https://goodsfarm-backend-garking.c9users.io/getpicture/'+data.img"
               style="height: 300px; width: 480px"
             >
           </figure>
-          <div class="card-content column is-two-thirds">
-            <div class="card-content__title is-pulled-left" style="margin-top: 20px;height: 50px;">
+          <div class="card-content column is-two-thirds" >
+            <div class="card-content__title is-pulled-left" style=" margin-top:40px;" >
               <h1 class="title is-24">{{ data.name }}</h1>
             </div>
 
-            <div class="card-content__text">
-              <!-- {{data.descrip}}<br><br> -->
+            <div class="text-left">
+                
             </div>
 
             <div
-              class="card-content__text is-pulled-left"
-              style="margin-top:100px; margin-top:100px;  height: 200px;"
+              class="text-left"
+              style="margin-top:100px;"
             >
               <p>
-                <strong>Product details :</strong>
-                {{data.descrip}}
+               <strong>Product details :</strong> {{data.descrip}}
               </p>
             </div>
 
-            <div class="card-content__price is-pulled-right">
+            <div class="card-content__price is-pulled-right" style="margin-top:300px;margin-right:50px;">
               <span class="title is-3">
                 <strong>{{ data.u_price }}</strong>
               </span>
@@ -39,7 +38,6 @@
               </span>
             </div>
 
-            <div class="card-content__text"></div>
           </div>
         </div>
         <div class="card-footer" style="padding: 0px 3px 0px 3px;">
@@ -180,3 +178,11 @@ export default {
   }
 };
 </script>
+
+<style>
+.aaa{
+  justify-content:center;
+  align-items:center
+}
+</style>
+
