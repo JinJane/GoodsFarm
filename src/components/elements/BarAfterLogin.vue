@@ -6,10 +6,11 @@
       aria-label="main navigation"
       style="padding: 0px; "
     >
-      <div class="navbar-brand">
+      <div class="navbar-brand" style="margin-left:20px; padding-bottom:0px;margin-top:5px">
         <router-link to="/profile">
           <a class="navbar-item" href="https://bulma.io" style="padding: 0px 16px 0px 16px">
             <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            
           </a>
         </router-link>
       </div>

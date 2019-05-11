@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" style="margin-top: 100px">
     <chart ref="chart" :type="'bar'" :data="data" :options="options"></chart>
     <div class="text-right set-bot">
       <router-link to="/">
